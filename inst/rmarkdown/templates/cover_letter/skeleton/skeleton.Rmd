@@ -5,7 +5,8 @@ header-includes:
   - \linespread{1.05}
 
 title: "Cover Letter"
-author: Steven V. Miller
+author: Caleb A. Aldridge
+initials: C.A. Aldridge
 address: |
     | 698 Candlewood Lane
     | Cabot Cove, ME USA
