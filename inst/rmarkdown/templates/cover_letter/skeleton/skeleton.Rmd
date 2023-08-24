@@ -4,6 +4,7 @@ geometry: margin=1in
 header-includes:
   - \linespread{1.05}
 
+title: "Cover Letter"
 author: Steven V. Miller
 address: |
     | 698 Candlewood Lane

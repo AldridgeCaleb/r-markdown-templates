@@ -510,6 +510,32 @@ $if(fontawesome)$\usepackage{fontawesome}$else$$endif$
 \newcommand{\blankline}{\quad\pagebreak[2]}
 \usepackage{graphicx}
 
+% Fancyhdr, as I tend to do with these personal documents.
+\usepackage{fancyhdr, lastpage}
+% Define a custom page style for the first page
+\fancypagestyle{firstpage}{
+  \renewcommand{\headrulewidth}{0.0pt}
+  \renewcommand{\footrulewidth}{0.0pt}
+  \lhead{}
+  \chead{}
+  \rhead{} % Customize right header for first page
+  \lfoot{\scriptsize $initials$ | $title$}
+  \cfoot{}
+  \rfoot{\scriptsize \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
+}
+
+% Define the regular page style for subsequent pages (optional)
+\fancypagestyle{regular}{
+  \renewcommand{\headrulewidth}{0.0pt}
+  \renewcommand{\footrulewidth}{0.0pt}
+  \lhead{}
+  \chead{}
+  \rhead{} % Empty right header for regular pages
+  \lfoot{\scriptsize $initials$}
+  \cfoot{}
+  \rfoot{\scriptsize \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
+}
+
 \begin{document}
 
 
