@@ -29,9 +29,10 @@
 #' @export
 #'
 
-cv <- function(...){
-  templ <- system.file("rmarkdown", "templates", "cv", "resources", "template.tex", package = "stevetemplates")
-  rmarkdown::pdf_document(template = templ,
+cv <- function(engine, ...){
+  templ <- system.file("rmarkdown", "templates", "cv", "resources", "template.tex", package = "rmarkdownTemplates")
+  eng <- engine
+  rmarkdown::pdf_document(template = templ, engine = eng
                           ...)
 }
 
@@ -39,5 +40,5 @@ cv <- function(...){
 #' @rdname cv
 #' @export
 templ_cv <- function() {
-  print(system.file("rmarkdown", "templates", "cv", "resources", "template.tex", package = "stevetemplates"))
+  print(system.file("rmarkdown", "templates", "cv", "resources", "template.tex", package = "rmarkdownTemplates"))
 }
