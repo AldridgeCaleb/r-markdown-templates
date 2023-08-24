@@ -1,5 +1,5 @@
 ---
-output: stevetemplates::word
+output: rmarkdownTemplates::word
 title: "Another Pandoc Markdown Article Starter and Template"
 author: Steven V. Miller
 ---

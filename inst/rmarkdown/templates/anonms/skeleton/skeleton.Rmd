@@ -1,6 +1,6 @@
 ---
 output: 
-  stevetemplates::anonms:
+  rmarkdownTemplates::anonms:
     citation_package: natbib
     dev: cairo_pdf
     keep_tex: true

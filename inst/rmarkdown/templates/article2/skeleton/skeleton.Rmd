@@ -1,6 +1,6 @@
 ---
 output: 
-  stevetemplates::article2:
+  rmarkdownTemplates::article2:
     citation_package: natbib
     dev: cairo_pdf
     keep_tex: true

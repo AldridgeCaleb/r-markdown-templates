@@ -1,5 +1,5 @@
 ---
-output: stevetemplates::memo
+output: rmarkdownTemplates::memo
 fontfamily: mathpazo
 fontsize: 11pt
 geometry: margin=1in

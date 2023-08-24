@@ -1,6 +1,6 @@
 ---
 output: 
-    stevetemplates::statement:
+    rmarkdownTemplates::statement:
     latex_engine: pdflatex
 geometry: margin=1in
 

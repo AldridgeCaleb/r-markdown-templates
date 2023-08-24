@@ -1,5 +1,5 @@
 ---
-output: stevetemplates::cover_letter
+output: rmarkdownTemplates::cover_letter
 geometry: margin=1in
 header-includes:
   - \linespread{1.05}

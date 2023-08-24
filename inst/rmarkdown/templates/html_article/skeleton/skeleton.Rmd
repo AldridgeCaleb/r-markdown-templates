@@ -1,5 +1,5 @@
 ---
-output: stevetemplates::html_article
+output: rmarkdownTemplates::html_article
 title: "An HTML Article Template"
 thanks: "Replication files are available on the author's Github account (http://github.com/svmiller/svm-r-markdown-templates). **Current version**: `r format(Sys.time(), '%B %d, %Y')`; **Corresponding author**: steven.v.miller@gmail.com."
 author:

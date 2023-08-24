@@ -3,7 +3,7 @@ title: "Résumé"
 author: "Rick Martel"
 date: "8/31/2020"
 output: 
-  stevetemplates::resume:
+  rmarkdownTemplates::resume:
     dev: cairo_pdf
 fontawesome: TRUE
 # How can we get a hold of you?

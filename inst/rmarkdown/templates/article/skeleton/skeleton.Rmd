@@ -1,6 +1,6 @@
 ---
 output: 
-  stevetemplates::article:
+  rmarkdownTemplates::article:
     fig_caption: true
 #bibliography: master.bib
 biblio-style: apsr

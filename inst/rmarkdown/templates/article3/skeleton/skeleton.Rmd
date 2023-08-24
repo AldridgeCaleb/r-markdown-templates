@@ -1,6 +1,6 @@
 ---
 output: 
-  stevetemplates::article3:
+  rmarkdownTemplates::article3:
     citation_package: natbib
     dev: cairo_pdf
 title: "Yet Another Pandoc Markdown Article Starter and Template"
