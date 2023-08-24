@@ -183,6 +183,13 @@ $endfor$
   \end{list}
 }
 
+\newenvironment{tightverse}
+{\vspace{-3.5ex}\begin{verse}}
+{\vspace{-0.5ex}\end{verse}}
+
+\newenvironment{tightquote}[1]
+{\vspace{-3.25ex}\begin{quote}\list{}{\leftmargin=#1\rightmargin=#1}\item[]}
+{\endlist\vspace{-0.5ex}\end{quote}}
 
 % Make parskips rather than indent with lists.
 \usepackage{parskip}
@@ -192,7 +199,7 @@ $endfor$
 
 % Use fontawesome. Note: you'll need TeXLive 2015. Update.
 $if(fontawesome)$\usepackage{fontawesome}$endif$
-$if(academicons)$\usepackage{academicons}$endif$
+\usepackage{academicons}
 
 % Fancyhdr, as I tend to do with these personal documents.
 \usepackage{fancyhdr, lastpage}
@@ -297,6 +304,8 @@ $if(address)$\moveleft.5\hoffset\centerline{$address$}$endif$
 \vspace{2 mm}
 
 \hrule
+
+\vspace{2 mm}
 
 \pagestyle{regular} % Apply the regular page style to subsequent pages (optional)
 
