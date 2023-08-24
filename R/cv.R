@@ -29,9 +29,9 @@
 #' @export
 #'
 
-cv <- function(...){
+cv <- function(engine){
   templ <- system.file("rmarkdown", "templates", "cv", "resources", "template.tex", package = "rmarkdownTemplates")
-  rmarkdown::pdf_document(template = templ, engine = "xelatex", ...)
+  rmarkdown::pdf_document(template = templ, latex_engine = engine)
 }
 
 
