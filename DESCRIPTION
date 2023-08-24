@@ -1,4 +1,4 @@
-Package: rmarkdown_templates
+Package: rmarkdownTemplates
 Type: Package
 Title: R Markdown Templates (forked from svmiller)
 Depends: R (>= 3.5.0)
