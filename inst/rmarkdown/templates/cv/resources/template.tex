@@ -273,6 +273,7 @@ $endif$
 
 \begin{document}
 
+\thispagestyle{firstpage} % Apply the custom page style to the first page
 
 \centerline{\huge \bf $author$}
 
@@ -295,7 +296,7 @@ $if(address)$\moveleft.5\hoffset\centerline{$address$}$endif$
 
 \hrule
 
-
+\pagestyle{regular} % Apply the regular page style to subsequent pages (optional)
 
 $body$
 
