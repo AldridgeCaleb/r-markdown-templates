@@ -32,7 +32,7 @@
 cv <- function(engine, ...){
   templ <- system.file("rmarkdown", "templates", "cv", "resources", "template.tex", package = "rmarkdownTemplates")
   eng <- engine
-  rmarkdown::pdf_document(template = templ, engine = eng
+  rmarkdown::pdf_document(template = templ, engine = eng,
                           ...)
 }
 
