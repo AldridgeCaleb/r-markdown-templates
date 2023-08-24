@@ -512,6 +512,8 @@ $if(fontawesome)$\usepackage{fontawesome}$else$$endif$
 
 % Fancyhdr, as I tend to do with these personal documents.
 \usepackage{fancyhdr, lastpage}
+\fancyhf{} % clear all header and footer fields
+
 % Define a custom page style for the first page
 \fancypagestyle{firstpage}{
   \renewcommand{\headrulewidth}{0.0pt}
@@ -538,7 +540,7 @@ $if(fontawesome)$\usepackage{fontawesome}$else$$endif$
 
 \begin{document}
 
-
+\thispagestyle{firstpage} % Apply the custom page style to the first page
 
 \hfill
 \begin{minipage}[t]{1\textwidth}
@@ -575,6 +577,8 @@ $else$$endif$
 % $endif$
 
 $body$
+
+pagestyle{regular} % Apply the regular page style to subsequent pages (optional)
 
 $if(has-frontmatter)$
 \backmatter
