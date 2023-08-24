@@ -9,11 +9,15 @@ jobtitle: "Chief Brewer, Arthur Guinness & Son"
 address: "Guinness Brewery · Park Royal · London NW10 7RR, UK"
 fontawesome: yes
 email: guinness@consumer-care.net
-# github: svmiller
-# twitter: stevenvmiller
-#osf: "Enter 5 digit osf string here"
-phone: "+353 1 408 4800"
 web: guinness.com
+phone: "+353 1 408 4800"
+
+# github: svmiller
+# googlescholar: 
+# researchgate: 
+# twitter: stevenvmiller
+# osf: "Enter 5 digit osf string here"
+
 updated: TRUE
 rdateformat: "`r format(Sys.time(), '%d %b %Y')`"
 
