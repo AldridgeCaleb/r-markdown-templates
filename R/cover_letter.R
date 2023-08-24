@@ -1,4 +1,4 @@
-#' Steve's (Non-Academic) Cover Letter Template
+#' Cover Letter Template
 #'
 #' A template for cover letters when applying for non-academic jobs. For more information, see here:
 #' <https://twitter.com/stevenvmiller/status/1320831949469065218>. This template will force the use of
@@ -30,8 +30,8 @@
 #'
 
 cover_letter <- function(...){
-  templ <- system.file("rmarkdown", "templates", "cover_letter", "resources", "template.tex", package = "stevetemplates")
-  rmarkdown::pdf_document(template = templ,
+  templ <- system.file("rmarkdown", "templates", "cover_letter", "resources", "template.tex", package = "rmarkdownTemplates")
+  rmarkdown::pdf_document(template = templ, latex_engine = "lualatex",
                           ...)
 }
 
@@ -39,5 +39,5 @@ cover_letter <- function(...){
 #' @rdname cover_letter
 #' @export
 templ_cover_letter <- function() {
-  print(system.file("rmarkdown", "templates", "cover_letter", "resources", "template.tex", package = "stevetemplates"))
+  print(system.file("rmarkdown", "templates", "cover_letter", "resources", "template.tex", package = "rmarkdownTemplates"))
 }
