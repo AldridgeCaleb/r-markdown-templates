@@ -1,9 +1,10 @@
-Package: stevetemplates
+Package: rmarkdown_templates
 Type: Package
-Title: Steve's R Markdown Templates
+Title: R Markdown Templates (forked from svmiller)
 Depends: R (>= 3.5.0)
 Version: 0.9.9
 Author: Steven V. Miller
+Contributor: Caleb A. Aldridge <caleb.a.aldridge@gmail.com>
 Maintainer: Steven V. Miller <steven.v.miller@gmail.com>
 Description: These are my collection of 'R Markdown' templates, mostly for compilation to PDF.
     These are useful for all things academic and professional, if you are using 'R Markdown'
