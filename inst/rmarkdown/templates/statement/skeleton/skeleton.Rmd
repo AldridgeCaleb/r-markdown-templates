@@ -1,7 +1,6 @@
 ---
 output: 
-    rmarkdownTemplates::statement:
-    latex_engine: pdflatex
+    rmarkdownTemplates::statement
 geometry: margin=1in
 
 title: "A Statement"
