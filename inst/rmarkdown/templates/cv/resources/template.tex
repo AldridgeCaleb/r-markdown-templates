@@ -307,9 +307,9 @@ $endif$
 
 $if(jobtitle)$\moveleft.5\hoffset\centerline{$jobtitle$}$endif$
 
-\moveleft.5\hoffset\centerline{$if(waddress)$ $waddress$ $endif$ $if(wemail)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:}{\tt $wemail$} \hspace{1 mm}$endif$ $if(wphone)$$if(fontawesome)$ \faPhone \hspace{1 mm}$else$\emph{Phone:}$endif$ $wphone$ $endif$} 
-
 \moveleft.5\hoffset\centerline{$if(paddress)$ $paddress$ $endif$ $if(pemail)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:}{\tt $pemail$} \hspace{1 mm}$endif$ $if(pphone)$$if(fontawesome)$ \faPhone \hspace{1 mm}$else$\emph{Phone:}$endif$ $pphone$ $endif$} 
+
+\moveleft.5\hoffset\centerline{$if(waddress)$ $waddress$ $endif$ $if(wemail)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:}{\tt $wemail$} \hspace{1 mm}$endif$ $if(wphone)$$if(fontawesome)$ \faPhone \hspace{1 mm}$else$\emph{Phone:}$endif$ $wphone$ $endif$} 
 
 \moveleft.5\hoffset\centerline{ $if(web)$$if(fontawesome)$\faGlobe \hspace{1 mm}$else$\emph{Web:}$endif$ \href{http://$web$}{\tt $web$} \hspace{1 mm} $endif$ $if(updated)$ | Updated: $if(rdateformat)$\emph{$rdateformat$}$else$\emph{\apstylekinda\today}$endif$$endif$}
 
