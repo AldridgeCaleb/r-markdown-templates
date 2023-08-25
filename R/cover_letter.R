@@ -31,8 +31,7 @@
 
 cover_letter <- function(...){
   templ <- system.file("rmarkdown", "templates", "cover_letter", "resources", "template.tex", package = "rmarkdownTemplates")
-  rmarkdown::pdf_document(template = templ, latex_engine = "lualatex",
-                          ...)
+  rmarkdown::pdf_document(template = templ, latex_engine = "lualatex", ...)
 }
 
 

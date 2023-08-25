@@ -24,8 +24,7 @@
 
 statement <- function(...){
   templ <- system.file("rmarkdown", "templates", "statement", "resources", "template.tex", package = "stevetemplates")
-  rmarkdown::pdf_document(template = templ,
-                          ...)
+  rmarkdown::pdf_document(template = templ, , latex_engine = "lualatex", ...)
 }
 
 
