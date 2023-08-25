@@ -17,6 +17,12 @@ $endif$
 
 \usepackage{parskip}
 \usepackage{titlesec}
+\titleformat*{\section}{\Large\sffamily\bfseries} % Use \arialnarrow here
+\titleformat*{\subsection}{\large\sffamily\bfseries} % \bfseries
+\titleformat*{\subsubsection}{\normalsize\sffamily\bfseries\itshape}
+\titleformat*{\paragraph}{\normalsize\itshape}
+\titleformat*{\subparagraph}{\normalsize\itshape}
+
 \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{6pt plus 2pt minus 2pt}
 \titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{6pt plus 2pt minus 2pt}
 
@@ -32,22 +38,28 @@ $endif$
 \linespread{1.05}
 
 \usepackage{fancyhdr}
-\pagestyle{fancy}
-\usepackage{lastpage}
-\renewcommand{\headrulewidth}{0.3pt}
-\renewcommand{\footrulewidth}{0.0pt} 
-\lhead{\footnotesize \textbf{$author$}}
-\chead{}
-\rhead{\footnotesize \emph{$title$}}
-%\lfoot{}
-%\cfoot{\small \thepage/\pageref*{LastPage}}
-%\rfoot{}
+% Define a custom page style for the first page
+\fancypagestyle{firstpage}{
+  \renewcommand{\headrulewidth}{0.0pt}
+  \renewcommand{\footrulewidth}{0.0pt}
+  \lhead{}
+  \chead{}
+  \rhead{} % Customize right header for first page
+  \lfoot{\scriptsize \sffamily \bfseries $initials$ | $title$}
+  \cfoot{}
+  \rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
+}
 
-\fancypagestyle{firststyle}
-{
-\renewcommand{\headrulewidth}{0pt}%
-   \fancyhf{}
-   \fancyfoot[C]{\small \thepage/\pageref*{LastPage}}
+% Define the regular page style for subsequent pages (optional)
+\fancypagestyle{regular}{
+  \renewcommand{\headrulewidth}{0.0pt}
+  \renewcommand{\footrulewidth}{0.0pt}
+  \lhead{}
+  \chead{}
+  \rhead{} % Empty right header for regular pages
+  \lfoot{\scriptsize \sffamily \bfseries $initials$ | $title}
+  \cfoot{}
+  \rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
 }
 
 %\def\labelitemi{--}
@@ -162,8 +174,9 @@ $endif$
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-  \setmainfont[]{cochineal}
-  \setsansfont[]{Linux Biolinum O}
+  $if(mainfont)$ \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$} $endif$
+  $if(sansfont)$ \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$} $endif$
+  $if(monofont)$ \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$} $endif$
 \fi
 
 % header includes!
@@ -174,7 +187,7 @@ $endfor$
 
 \begin{document}  
 
-
+\thispagestyle{firstpage} % Apply the custom page style to the first page
 
 \thispagestyle{plain} 
 
@@ -192,10 +205,9 @@ $if(email)$\texttt{$email$}$else$TBD$endif$   \\
 \vspace{6 mm}
 	
 
-
 $body$
 
-
+\pagestyle{regular} % Apply the regular page style to subsequent pages (optional)
 
 
 $if(natbib)$

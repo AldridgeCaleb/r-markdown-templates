@@ -5,11 +5,13 @@ output:
 geometry: margin=1in
 
 title: "A Statement"
-author: Steven V. Miller
-affiliation: Department of Economic History and International Relations, Stockholm University
-email: "steven.miller@ekohist.su.se"
+author: Caleb A. Aldridge
+affiliation: 
+email: "caleb.a.aldridge@gmail.com"
 
-fontfamily: cochineal
+mainfont: Times New Roman
+sansfont: Arial
+monofont: Courier New
 fontsize: 11pt
 ---
 
