@@ -562,7 +562,7 @@ $if(phone)$$if(fontawesome)$\faPhone \hspace{1 mm}$else$$endif$ \small{$phone$} 
 $if(email)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$$endif$ \small{\tt $email$} \\ $else$$endif$
 $if(url)$$if(fontawesome)$\faGlobe \hspace{1 mm}$else$$endif$ \small{\href{http://$url$}{\tt $url$}}\\ $else$$endif$
 \hspace{1cm} \\
-$if(date)$ $date$ \\ $else$$endif$
+$if(date)$ {\sffamily \bfseries $date$} \\ $else$$endif$
 \end{minipage}
 
 % \vspace*{1em} 
