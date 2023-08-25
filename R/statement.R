@@ -23,7 +23,7 @@
 #'
 
 statement <- function(...){
-  templ <- system.file("rmarkdown", "templates", "statement", "resources", "template.tex", package = "stevetemplates")
+  templ <- system.file("rmarkdown", "templates", "statement", "resources", "template.tex", package = "rmarkdownTemplates")
   rmarkdown::pdf_document(template = templ, , latex_engine = "lualatex", ...)
 }
 
@@ -31,5 +31,5 @@ statement <- function(...){
 #' @rdname statement
 #' @export
 templ_statement <- function() {
-  print(system.file("rmarkdown", "templates", "statement", "resources", "template.tex", package = "stevetemplates"))
+  print(system.file("rmarkdown", "templates", "statement", "resources", "template.tex", package = "rmarkdownTemplates"))
 }
