@@ -199,6 +199,7 @@ $endfor$
 \begin{document}  
 
 \thispagestyle{firstpage} % Apply the custom page style to the first page
+\pagestyle{regular} % Apply the regular page style to subsequent pages (optional)
 
 %\thispagestyle{plain} 
 
@@ -217,9 +218,6 @@ $if(email)$\texttt{$email$}$else$TBD$endif$   \\
 	
 
 $body$
-
-\pagestyle{regular} % Apply the regular page style to subsequent pages (optional)
-
 
 $if(natbib)$
 $if(bibliography)$
