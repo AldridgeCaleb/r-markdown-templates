@@ -174,10 +174,11 @@ $endif$
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-  $if(mainfont)$ \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$} $endif$
-  $if(sansfont)$ \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$} $endif$
-  $if(monofont)$ \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$} $endif$
 \fi
+
+$if(mainfont)$ \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$} $endif$
+$if(sansfont)$ \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$} $endif$
+$if(monofont)$ \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$} $endif$
 
 % header includes!
 $for(header-includes)$
