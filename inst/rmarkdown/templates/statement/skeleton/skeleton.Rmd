@@ -6,7 +6,8 @@ geometry: margin=1in
 
 title: "A Statement"
 author: Caleb A. Aldridge
-affiliation: 
+initials: C.A. Aldridge
+# affiliation: 
 email: "caleb.a.aldridge@gmail.com"
 
 mainfont: Times New Roman
