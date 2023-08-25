@@ -190,6 +190,19 @@ $if(monofont)$
     \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$} 
 $endif$
 
+\usepackage{xcolor}
+\usepackage{titlesec}
+% Define light and dark Microsoft blue colours
+\definecolor{black}{rgb}{.0,.0,.0}
+\definecolor{grey}{rgb}{.5,.5,.5}
+% Define a new fontfamily for the subsubsection font
+% Don't use \fontspec directly to change the font
+% \newfontfamily\subsubsectionfont[Color=MSLightBlue]{Times New Roman}
+% Set formats for each heading level
+\titleformat*{\section}{\Large\sffamily\bfseries\color{black}} % Use \arialnarrow here
+\titleformat*{\subsection}{\large\sffamily\bfseries\color{black}} % \bfseries
+\titleformat*{\subsubsection}{\normalsize\sffamily\bfseries\itshape\color{black}}
+
 % header includes!
 $for(header-includes)$
 $header-includes$
