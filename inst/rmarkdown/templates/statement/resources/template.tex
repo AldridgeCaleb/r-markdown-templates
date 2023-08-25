@@ -1,11 +1,11 @@
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{article}
 \usepackage[$geometry$]{geometry}
-\newcommand*{\authorfont}{\fontfamily{phv}\selectfont}
-$if(fontfamily)$
-\usepackage[$fontfamilyoptions$]{$fontfamily$}
-$else$
-\usepackage{lmodern}
-$endif$
+%\newcommand*{\authorfont}{\fontfamily{phv}\selectfont}
+%$if(fontfamily)$
+%\usepackage[$fontfamilyoptions$]{$fontfamily$}
+%$else$
+%\usepackage{lmodern}
+%$endif$
 \usepackage{abstract}
 \renewcommand{\abstractname}{}    % clear the title
 \renewcommand{\absnamepos}{empty} % originally center
@@ -173,7 +173,7 @@ $endif$
 \else % if luatex or xetex
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  %\defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
 
 $if(mainfont)$ \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$} $endif$
@@ -190,12 +190,12 @@ $endfor$
 
 \thispagestyle{firstpage} % Apply the custom page style to the first page
 
-\thispagestyle{plain} 
+%\thispagestyle{plain} 
 
 \begin{flushleft}\Large \bf $title$  \end{flushleft}
 	\vspace{1 mm}   
 $author$ \\
-\emph{$affiliation$} \\
+%\emph{$affiliation$} \\
 $if(email)$\texttt{$email$}$else$TBD$endif$   \\
 
 % \blankline 
