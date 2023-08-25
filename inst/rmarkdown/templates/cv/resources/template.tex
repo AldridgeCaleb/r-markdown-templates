@@ -203,6 +203,8 @@ $if(fontawesome)$\usepackage{fontawesome}$endif$
 
 % Fancyhdr, as I tend to do with these personal documents.
 \usepackage{fancyhdr, lastpage}
+\fancyhf{} % clear all header and footer fields
+
 % Define a custom page style for the first page
 \fancypagestyle{firstpage}{
   \renewcommand{\headrulewidth}{0.0pt}
@@ -212,7 +214,7 @@ $if(fontawesome)$\usepackage{fontawesome}$endif$
   \rhead{} % Customize right header for first page
   \lfoot{\scriptsize \sffamily \bfseries $initials$ | $title$}
   \cfoot{}
-  \rfoot{\scriptsize  \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
+  \rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
 }
 
 % Define the regular page style for subsequent pages (optional)
@@ -224,7 +226,7 @@ $if(fontawesome)$\usepackage{fontawesome}$endif$
   \rhead{} % Empty right header for regular pages
   \lfoot{\scriptsize \sffamily \bfseries $initials$ | $title$}
   \cfoot{}
-  \rfoot{\scriptsize  \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
+  \rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
 }
 
 \usepackage{xcolor}
