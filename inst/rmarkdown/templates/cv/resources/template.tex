@@ -298,6 +298,7 @@ $endif$
 \begin{document}
 
 \thispagestyle{firstpage} % Apply the custom page style to the first page
+\pagestyle{regular} % Apply the regular page style to subsequent pages (optional)
 
 \centerline{\huge \sffamily \bfseries $author$}
 
@@ -325,8 +326,6 @@ $if(jobtitle)$\moveleft.5\hoffset\centerline{$jobtitle$}$endif$
 \hrule
 
 $body$
-
-%\pagestyle{regular} % Apply the regular page style to subsequent pages (optional)
 
 $if(natbib)$
 $if(bibliography)$
