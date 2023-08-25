@@ -165,20 +165,35 @@ $endif$
 
 \def\citeapos#1{\citeauthor{#1}'s (\citeyear{#1})}
 
+\usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[T1]{fontenc}
+  \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Scale=MatchLowercase}
-  %\defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-\fi
+$if(euro)$
+  \usepackage{eurosym}
+$endif$
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+$if(euro)$
+  \newcommand{\euro}{€}
+$endif$
 
-$if(mainfont)$ \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$} $endif$
-$if(sansfont)$ \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$} $endif$
-$if(monofont)$ \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$} $endif$
+$if(mainfont)$ 
+    \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$} 
+$endif$
+$if(sansfont)$ 
+    \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$} 
+$endif$
+$if(monofont)$ 
+    \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$} 
+$endif$
 
 % header includes!
 $for(header-includes)$
