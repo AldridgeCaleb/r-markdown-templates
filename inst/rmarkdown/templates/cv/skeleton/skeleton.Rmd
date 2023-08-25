@@ -23,8 +23,9 @@ rdateformat: "`r format(Sys.time(), '%d %b %Y')`"
 
 keywords: R Markdown, academic CV, template
 
-fontfamily: mathpazo
-fontfamilyoptions: sc, osf
+mainfont: Times New Roman
+sansfont: Arial
+monofont: Courier New
 fontsize: 11pt
 linkcolor: blue
 urlcolor: blue

@@ -212,7 +212,7 @@ $if(fontawesome)$\usepackage{fontawesome}$endif$
   \rhead{} % Customize right header for first page
   \lfoot{\scriptsize $initials$ | $title$}
   \cfoot{}
-  \rfoot{\scriptsize \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
+  \rfoot{\scriptsize  \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
 }
 
 % Define the regular page style for subsequent pages (optional)
@@ -224,20 +224,35 @@ $if(fontawesome)$\usepackage{fontawesome}$endif$
   \rhead{} % Empty right header for regular pages
   \lfoot{\scriptsize $initials$}
   \cfoot{}
-  \rfoot{\scriptsize \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
+  \rfoot{\scriptsize  \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
 }
-%---
-%\usepackage{fancyhdr,lastpage}
-%\pagestyle{fancy}
-%\renewcommand{\headrulewidth}{0.0pt}
-%\renewcommand{\footrulewidth}{0.0pt}
-%\lhead{}
-%\chead{}
-%\rhead{}
-%\lfoot{}
-%\cfoot{\scriptsize  $author-meta$ - $title$$if(updated)$$else$ - $if(rdateformat)$$rdateformat$$else$\apstylekinda\today$endif$$endif$}
-%\rfoot{\scriptsize \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
-%---
+
+% Define light and dark Microsoft blue colours
+\definecolor{black}{rgb}{.0,.0,.0}
+\definecolor{grey}{rgb}{.5,.5,.5}
+% Define a new fontfamily for the subsubsection font
+% Don't use \fontspec directly to change the font
+% \newfontfamily\subsubsectionfont[Color=MSLightBlue]{Times New Roman}
+% Set formats for each heading level
+\titleformat*{\section}{\Large\sffamily\bfseries\color{black}} % Use \arialnarrow here
+\titleformat*{\subsection}{\large\sffamily\bfseries\color{black}} % \bfseries
+\titleformat*{\subsubsection}{\normalsize\sffamily\bfseries\itshape\color{black}}
+
+
+\titlespacing*{\section}
+  {0pt} % left
+  {12pt plus 4pt minus 2pt} % before
+  {4pt plus 2pt minus 2pt} % after
+
+\titlespacing*{\subsection}
+  {0pt} % left
+  {4pt plus 2pt minus 2pt} % before
+  {4pt plus 2pt minus 2pt} % after
+
+\titlespacing*{\subsubsection}
+  {0pt} % left
+  {4pt plus 2pt minus 2pt} % before
+  {4pt plus 2pt minus 2pt} % after
 
 % Always load hyperref last.
 \usepackage{hyperref}
