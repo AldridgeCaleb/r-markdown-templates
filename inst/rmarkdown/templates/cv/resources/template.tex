@@ -314,14 +314,14 @@ $if(jobtitle)$\moveleft.5\hoffset\centerline{$jobtitle$}$endif$
 \begin{minipage}[t]{0.5\textwidth} % Left column (Personal contact info)
 \raggedright
 $if(paddress)$ $paddress$ $endif$
-$if(pemail)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:}{\tt $pemail$} \hspace{1 mm}$endif$
+$if(pemail)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:$pemail$}{\tt $pemail$} \hspace{1 mm}$endif$
 $if(pphone)$$if(fontawesome)$\faPhone \hspace{1 mm}$else$\emph{Phone:}$endif$ $pphone$ $endif$
 $if(pweb)$$if(fontawesome)$\faGlobe \hspace{1 mm}$else$\emph{Web:}$endif$ \href{http://$pweb$}{\tt $pweb$}$endif$
 \end{minipage}
 \begin{minipage}[t]{0.5\textwidth} % Right column (Professional contact info)
 \raggedleft
 $if(waddress)$ $waddress$ $endif$
-$if(wemail)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:}{\tt $wemail$} \hspace{1 mm}$endif$
+$if(wemail)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:$wemail$}{\tt $wemail$} \hspace{1 mm}$endif$
 $if(wphone)$$if(fontawesome)$\faPhone \hspace{1 mm}$else$\emph{Phone:}$endif$ $wphone$$endif$
 $if(wweb)$$if(fontawesome)$\faGlobe \hspace{1 mm}$else$\emph{Web:}$endif$ \href{http://$wweb$}{\tt $wweb$}$endif$
 \end{minipage}
