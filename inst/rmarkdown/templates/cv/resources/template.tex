@@ -316,15 +316,15 @@ $if(jobtitle)$\moveleft.5\hoffset\centerline{$jobtitle$}$endif$
 % Contact Information in Two Columns
 \begin{multicols}{2}
 % Left column (Personal contact info)
-$if(paddress)$ $paddress$ $endif$\\
+$if(paddress)$ $paddress$ $endif$
 $if(pemail)$ \texttt{\href{mailto:$pemail$}{$pemail$}} $endif$
-$if(pphone)$ $pphone$ $endif$\\
+$if(pphone)$ $pphone$ $endif$
 $if(pweb)$ \texttt{\href{http://$pweb$}{$pweb$}} $endif$
 \columnbreak % Force break to the next column
 % Right column (Professional contact info)
-$if(waddress)$ $waddress$ $endif$\\
+$if(waddress)$ $waddress$ $endif$
 $if(wemail)$ \texttt{\href{mailto:$wemail$}{$wemail$}} $endif$
-$if(wphone)$ $wphone$ $endif$\\
+$if(wphone)$ $wphone$ $endif$
 $if(wweb)$ \texttt{\href{http://$wweb$}{$wweb$}} $endif$
 \end{multicols}
 
