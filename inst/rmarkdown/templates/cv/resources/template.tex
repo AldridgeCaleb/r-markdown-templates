@@ -295,6 +295,9 @@ $endif$
 %\definecolor{orcidlogocol}{HTML}{A6CE39}
 % \newcommand{\orcid}[1]{\href{https://orcid.org/#1}{\textcolor[HTML]{A6CE39}{\aiOrcid}}}
 
+\usepackage{multicol}
+% multicol package for organizing addresses into personal and work columns
+
 \begin{document}
 
 \thispagestyle{firstpage} % Apply the custom page style to the first page
@@ -311,7 +314,6 @@ $endif$
 $if(jobtitle)$\moveleft.5\hoffset\centerline{$jobtitle$}$endif$
 
 % Contact Information in Two Columns
-\usepackage{multicol}
 \begin{multicols}{2}
 % Left column (Personal contact info)
 $if(paddress)$ $paddress$ $endif$
