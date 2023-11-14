@@ -1,6 +1,9 @@
 % CV ----
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 
+% Set 1" margins
+\usepackage[margin=1in]{geometry}
+
 % Basic packages
 $if(fontfamily)$
 \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
@@ -34,6 +37,9 @@ $endif$
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Remove indentation and set space between paragraphs
+\usepackage{parskip}
 
 % Language settings
 $if(lang)$
@@ -78,6 +84,7 @@ $endif$
 % ----------------------------------
 
 % Section and Subsection Fonts and Styles
+\setcounter{secnumdepth}{0}
 \usepackage{titlesec}
 \usepackage{xcolor}
 \definecolor{black}{rgb}{.0,.0,.0}
@@ -174,13 +181,13 @@ $if(paddress)$
 $paddress$
 $endif$
 $if(pemail)$
-\texttt{\href{mailto:$pemail$}{$pemail$}}
+\faEnvelopeO \hspace{1 mm} \texttt{\href{mailto:$pemail$}{$pemail$}} \hspace{1 mm}
 $endif$
 $if(pphone)$
-$pphone$
+\faPhone \hspace{1 mm} $pphone$ \hspace{1 mm}
 $endif$
 $if(pweb)$
-\texttt{\href{http://$pweb$}{$pweb$}}
+\faGlobe \hspace{1 mm} \texttt{\href{http://$pweb$}{$pweb$}} \hspace{1 mm}
 $endif$
 
 \columnbreak % Moves to the right column
@@ -190,13 +197,13 @@ $if(waddress)$
 $waddress$
 $endif$
 $if(wemail)$
-\texttt{\href{mailto:$wemail$}{$wemail$}}
+\faEnvelopeO \hspace{1 mm} \texttt{\href{mailto:$wemail$}{$wemail$}} \hspace{1 mm}
 $endif$
 $if(wphone)$
-$wphone$
+\faPhone \hspace{1 mm} $wphone$ \hspace{1 mm}
 $endif$
 $if(wweb)$
-\texttt{\href{http://$wweb$}{$wweb$}}
+\faGlobe \hspace{1 mm} \texttt{\href{http://$wweb$}{$wweb$}} \hspace{1 mm}
 $endif$
 \end{multicols}
 
