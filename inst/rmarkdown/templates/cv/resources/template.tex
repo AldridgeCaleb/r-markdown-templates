@@ -178,32 +178,32 @@ $endif$
 \noindent % Prevents indentation on the first line
 % Left column (Personal contact info)
 $if(paddress)$
-$paddress$
+\faLocationDot \hspace{1 mm} $paddress$
 $endif$\\
 $if(pemail)$
-\faEnvelopeO \hspace{1 mm} \texttt{\href{mailto:$pemail$}{$pemail$}} \hspace{1 mm}
+\faEnvelopeO \hspace{1 mm} \texttt{\href{mailto:$pemail$}{$pemail$}}
 $endif$\\
 $if(pphone)$
-\faPhone \hspace{1 mm} $pphone$ \hspace{1 mm}
+\faPhone \hspace{1 mm} $pphone$
 $endif$\\
 $if(pweb)$
-\faGlobe \hspace{1 mm} \texttt{\href{http://$pweb$}{$pweb$}} \hspace{1 mm}
+\faGlobe \hspace{1 mm} \texttt{\href{http://$pweb$}{$pweb$}}
 $endif$
 
 \columnbreak % Moves to the right column
 
 % Right column (Professional contact info)
 $if(waddress)$
-$waddress$
+\faLocationDot \hspace{1 mm} $waddress$
 $endif$\\
 $if(wemail)$
-\faEnvelopeO \hspace{1 mm} \texttt{\href{mailto:$wemail$}{$wemail$}} \hspace{1 mm}
+\faEnvelopeO \hspace{1 mm} \texttt{\href{mailto:$wemail$}{$wemail$}}
 $endif$\\
 $if(wphone)$
-\faPhone \hspace{1 mm} $wphone$ \hspace{1 mm}
+\faPhone \hspace{1 mm} $wphone$
 $endif$\\
 $if(wweb)$
-\faGlobe \hspace{1 mm} \texttt{\href{http://$wweb$}{$wweb$}} \hspace{1 mm}
+\faGlobe \hspace{1 mm} \texttt{\href{http://$wweb$}{$wweb$}}
 $endif$
 \end{multicols}
 
