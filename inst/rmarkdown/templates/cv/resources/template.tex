@@ -316,16 +316,18 @@ $if(jobtitle)$\moveleft.5\hoffset\centerline{$jobtitle$}$endif$
 % Contact Information in Two Columns
 \begin{multicols}{2}
 % Left column (Personal contact info)
-$if(paddress)$ $paddress$ $endif$
-$if(pemail)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:$pemail$}{\tt $pemail$} \hspace{1 mm}$endif$
-$if(pphone)$$if(fontawesome)$\faPhone \hspace{1 mm}$else$\emph{Phone:}$endif$ $pphone$ $endif$
-$if(pweb)$$if(fontawesome)$\faGlobe \hspace{1 mm}$else$\emph{Web:}$endif$ \href{http://$pweb$}{\tt $pweb$}$endif$
+$if(paddress)$ $paddress$ $endif$\\
+$if(pemail)$ \texttt{\href{mailto:$pemail$}{$pemail$}} $endif$
+$if(pphone)$ $pphone$ $endif$\\
+$if(pweb)$ \texttt{\href{http://$pweb$}{$pweb$}} $endif$
+\columnbreak % Force break to the next column
 % Right column (Professional contact info)
-$if(waddress)$ $waddress$ $endif$
-$if(wemail)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:$wemail$}{\tt $wemail$} \hspace{1 mm}$endif$
-$if(wphone)$$if(fontawesome)$\faPhone \hspace{1 mm}$else$\emph{Phone:}$endif$ $wphone$$endif$
-$if(wweb)$$if(fontawesome)$\faGlobe \hspace{1 mm}$else$\emph{Web:}$endif$ \href{http://$wweb$}{\tt $wweb$}$endif$
+$if(waddress)$ $waddress$ $endif$\\
+$if(wemail)$ \texttt{\href{mailto:$wemail$}{$wemail$}} $endif$
+$if(wphone)$ $wphone$ $endif$\\
+$if(wweb)$ \texttt{\href{http://$wweb$}{$wweb$}} $endif$
 \end{multicols}
+
 
 % \moveleft.5\hoffset\centerline{$if(paddress)$ $paddress$ $endif$ $if(pemail)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:}{\tt $pemail$} \hspace{1 mm}$endif$ $if(pphone)$$if(fontawesome)$ \faPhone \hspace{1 mm}$else$\emph{Phone:}$endif$ $pphone$ $endif$ $if(pweb)$$if(fontawesome)$\faGlobe \hspace{1 mm}$else$\emph{Web:}$endif$ \href{http://$pweb$}{\tt $pweb$} \hspace{1 mm} $endif$} 
 
