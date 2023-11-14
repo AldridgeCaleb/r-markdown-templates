@@ -32,7 +32,7 @@ $if(sansfont)$
     \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
 $endif$
 $if(monofont)$
-    \setmonofont[Mapping=tex-ansi$if(monofontoptions)$,$for(monofontoptions)$$monofontoptions$$sep$,$endfor$$endif$]{$monofont$}
+    \setmonofont[Mapping=tex-ansi, Scale=0.9$if(monofontoptions)$,$for(monofontoptions)$$monofontoptions$$sep$,$endfor$$endif$]{$monofont$}
 $endif$
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
@@ -166,12 +166,15 @@ $if(fontawesome)$\usepackage{fontawesome}$endif$
 \centerline{\huge \sffamily \bfseries $author$}
 
 \vspace{2mm}
-\hrule
-\vspace{2mm}
 
 $if(jobtitle)$
 \centerline{$jobtitle$}
 $endif$
+
+\vspace{2mm}
+
+\hrule
+\vspace{2mm}
 
 % Contact Information in Two Columns
 \begin{multicols}{2}
@@ -207,7 +210,6 @@ $if(wweb)$
 $endif$
 \end{multicols}
 
-\vspace{2mm}
 \hrule
 
 $body$
