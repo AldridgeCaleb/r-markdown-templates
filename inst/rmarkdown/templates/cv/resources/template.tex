@@ -85,6 +85,12 @@ $endif$
 \titlespacing*{\section}{0pt}{12pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
 \titlespacing*{\subsection}{0pt}{4pt plus 2pt minus 2pt}{4pt plus 2pt minus 2pt}
 \titlespacing*{\subsubsection}{0pt}{4pt plus 2pt minus 2pt}{4pt plus 2pt minus 2pt}
+\newenvironment{tightverse}
+{\vspace{-3.5ex}\begin{verse}}
+{\vspace{-0.5ex}\end{verse}}
+\newenvironment{tightquote}[1]
+{\vspace{-3.25ex}\begin{quote}\list{}{\leftmargin=#1\rightmargin=#1}\item[]}
+{\endlist\vspace{-0.5ex}\end{quote}}
 
 % List Customizations
 \usepackage{enumitem}
@@ -94,11 +100,26 @@ $endif$
 \usepackage{fancyhdr, lastpage}
 \fancyhf{} % clear all header and footer fields
 \fancypagestyle{firstpage}{% Custom style for the first page
-  % Customizations here
-}
+  \renewcommand{\headrulewidth}{0.0pt}
+  \renewcommand{\footrulewidth}{0.0pt}
+  \lhead{}
+  \chead{}
+  \rhead{} % Customize right header for first page
+  \lfoot{\scriptsize \sffamily \bfseries $initials$ | $title$}
+  \cfoot{}
+  \rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
+  }
+  
 \fancypagestyle{regular}{% Style for other pages
-  % Customizations here
-}
+\renewcommand{\headrulewidth}{0.0pt}
+  \renewcommand{\footrulewidth}{0.0pt}
+  \lhead{}
+  \chead{}
+  \rhead{} % Empty right header for regular pages
+  \lfoot{\scriptsize \sffamily \bfseries $initials$ | $title$}
+  \cfoot{}
+  \rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
+  }
 
 % Hyperlink and Color Settings
 \usepackage{hyperref}
