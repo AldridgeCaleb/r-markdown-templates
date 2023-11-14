@@ -1,6 +1,7 @@
 % CV ----
-% This is just here so I know exactly what I'm looking at in Rstudio when messing with stuff.
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+
+% Basic packages
 $if(fontfamily)$
 \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
 $else$
@@ -13,22 +14,14 @@ $endif$
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
+
+% Font and encoding settings
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
   \usepackage[utf8]{inputenc}
-$if(euro)$
-  \usepackage{eurosym}
-$endif$
 \else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
+  \usepackage{fontspec}
   \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
-$if(euro)$
-  \newcommand{\euro}{€}
-$endif$
 $if(mainfont)$
     \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
 $endif$
@@ -38,311 +31,158 @@ $endif$
 $if(monofont)$
     \setmonofont[Mapping=tex-ansi$if(monofontoptions)$,$for(monofontoptions)$$monofontoptions$$sep$,$endfor$$endif$]{$monofont$}
 $endif$
-$if(mathfont)$
-    \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-$endif$
-$if(CJKmainfont)$
-    \usepackage{xeCJK}
-    \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
-$endif$
-\fi
-% use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
-$if(geometry)$
-\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 $endif$
 
-
+% Language settings
 $if(lang)$
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
-$if(babel-newcommands)$
-  $babel-newcommands$
-$endif$
-\else
-  \usepackage{polyglossia}
-  \setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
+\usepackage{polyglossia}
+\setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
 $for(polyglossia-otherlangs)$
   \setotherlanguage[$polyglossia-otherlangs.options$]{$polyglossia-otherlangs.name$}
 $endfor$
-\fi
 $endif$
+
+% Bibliography settings
 $if(natbib)$
 \usepackage{natbib}
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 $if(biblatex)$
 \usepackage$if(biblio-style)$[style=$biblio-style$]$endif${biblatex}
-$if(biblatexoptions)$\ExecuteBibliographyOptions{$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$}$endif$
-$for(bibliography)$
-\addbibresource{$bibliography$}
-$endfor$
+\addbibresource{$for(bibliography)$$bibliography$$sep$,$endfor$}
 $endif$
+
+% Other packages and settings
 $if(listings)$
 \usepackage{listings}
-$endif$
-$if(lhs)$
-\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
-$endif$
-$if(highlighting-macros)$
-$highlighting-macros$
-$endif$
-$if(verbatim-in-note)$
-\usepackage{fancyvrb}
-\VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
 $if(tables)$
 \usepackage{longtable,booktabs}
 $endif$
 $if(graphics)$
 \usepackage{graphicx,grffile}
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 $endif$
 $if(links-as-notes)$
-% Make links footnotes instead of hotlinks:
 \renewcommand{\href}[2]{#2\footnote{\url{#1}}}
 $endif$
-$if(strikeout)$
-\usepackage[normalem]{ulem}
-% avoid problems with \sout in headers with hyperref:
-\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
-$endif$
 $if(indent)$
+% Indent settings here
 $else$
+% Non-indent settings here
+$endif$
 
-
-$endif$
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-$if(numbersections)$
-\setcounter{secnumdepth}{5}
-$else$
-\setcounter{secnumdepth}{0}
-$endif$
-$if(subparagraph)$
-$else$
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-$endif$
-$if(dir)$
-\ifxetex
-  % load bidi as late as possible as it modifies e.g. graphicx
-  $if(latex-dir-rtl)$
-  \usepackage[RTLdocument]{bidi}
-  $else$
-  \usepackage{bidi}
-  $endif$
-\fi
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \TeXXeTstate=1
-  \newcommand{\RL}[1]{\beginR #1\endR}
-  \newcommand{\LR}[1]{\beginL #1\endL}
-  \newenvironment{RTL}{\beginR}{\endR}
-  \newenvironment{LTR}{\beginL}{\endL}
-\fi
-$endif$
-$for(header-includes)$
-$header-includes$
-$endfor$
-
-% Now begins the stuff that I added.
+% Custom settings and additional packages
 % ----------------------------------
 
-% Custom section fonts
-\usepackage{sectsty}
-\sectionfont{\rmfamily\mdseries\large\bf}
-\subsectionfont{\rmfamily\mdseries\normalsize\scshape}
+% Section and Subsection Fonts and Styles
+\usepackage{titlesec}
+\usepackage{xcolor}
+\definecolor{black}{rgb}{.0,.0,.0}
+\definecolor{grey}{rgb}{.5,.5,.5}
+\titleformat*{\section}{\Large\sffamily\bfseries\color{black}}
+\titleformat*{\subsection}{\large\sffamily\bfseries\color{black}}
+\titleformat*{\subsubsection}{\normalsize\sffamily\bfseries\itshape\color{black}}
+\titlespacing*{\section}{0pt}{12pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+\titlespacing*{\subsection}{0pt}{4pt plus 2pt minus 2pt}{4pt plus 2pt minus 2pt}
+\titlespacing*{\subsubsection}{0pt}{4pt plus 2pt minus 2pt}{4pt plus 2pt minus 2pt}
 
+% List Customizations
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=*, noitemsep, topsep=0pt}
 
-% Make lists without bullets
-\renewenvironment{itemize}{
-  \begin{list}{}{
-    \setlength{\leftmargin}{0.1in}
-  }
-}{
-  \end{list}
+% Header and Footer Customization
+\usepackage{fancyhdr, lastpage}
+\fancyhf{} % clear all header and footer fields
+\fancypagestyle{firstpage}{% Custom style for the first page
+  % Customizations here
+}
+\fancypagestyle{regular}{% Style for other pages
+  % Customizations here
 }
 
-\newenvironment{tightverse}
-{\vspace{-3.5ex}\begin{verse}}
-{\vspace{-0.5ex}\end{verse}}
+% Hyperlink and Color Settings
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=grey,
+  urlcolor=blue,
+  breaklinks=true,
+  bookmarks=true,
+  pdftitle={$title-meta$ (Curriculum Vitae)},
+  pdfauthor={$author-meta$},
+}
 
-\newenvironment{tightquote}[1]
-{\vspace{-3.25ex}\begin{quote}\list{}{\leftmargin=#1\rightmargin=#1}\item[]}
-{\endlist\vspace{-0.5ex}\end{quote}}
+% Multicolumn Layout for Addresses
+\usepackage{multicol}
 
-% Make parskips rather than indent with lists.
-\usepackage{parskip}
-% \usepackage{titlesec}
-% \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{12pt plus 2pt minus 2pt}
-% \titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{12pt plus 2pt minus 2pt}
+% Custom Date Formatting
+\usepackage{datetime}
+\newdateformat{apstylekinda}{\shortmonthname[\THEMONTH]. \THEDAY, \THEYEAR}
 
-% Use fontawesome. Note: you'll need TeXLive 2015. Update.
+% Fontawesome and Academicons
 $if(fontawesome)$\usepackage{fontawesome}$endif$
 \usepackage{academicons}
 
-% Fancyhdr, as I tend to do with these personal documents.
-\usepackage{fancyhdr, lastpage}
-\fancyhf{} % clear all header and footer fields
-
-% Define a custom page style for the first page
-\fancypagestyle{firstpage}{
-  \renewcommand{\headrulewidth}{0.0pt}
-  \renewcommand{\footrulewidth}{0.0pt}
-  \lhead{}
-  \chead{}
-  \rhead{} % Customize right header for first page
-  \lfoot{\scriptsize \sffamily \bfseries $initials$ | $title$}
-  \cfoot{}
-  \rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
-}
-
-% Define the regular page style for subsequent pages (optional)
-\fancypagestyle{regular}{
-  \renewcommand{\headrulewidth}{0.0pt}
-  \renewcommand{\footrulewidth}{0.0pt}
-  \lhead{}
-  \chead{}
-  \rhead{} % Empty right header for regular pages
-  \lfoot{\scriptsize \sffamily \bfseries $initials$ | $title$}
-  \cfoot{}
-  \rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
-}
-
-\usepackage{xcolor}
-\usepackage{titlesec}
-% Define light and dark Microsoft blue colours
-\definecolor{black}{rgb}{.0,.0,.0}
-\definecolor{grey}{rgb}{.5,.5,.5}
-% Define a new fontfamily for the subsubsection font
-% Don't use \fontspec directly to change the font
-% \newfontfamily\subsubsectionfont[Color=MSLightBlue]{Times New Roman}
-% Set formats for each heading level
-\titleformat*{\section}{\Large\sffamily\bfseries\color{black}} % Use \arialnarrow here
-\titleformat*{\subsection}{\large\sffamily\bfseries\color{black}} % \bfseries
-\titleformat*{\subsubsection}{\normalsize\sffamily\bfseries\itshape\color{black}}
-
-
-\titlespacing*{\section}
-  {0pt} % left
-  {12pt plus 4pt minus 2pt} % before
-  {4pt plus 2pt minus 2pt} % after
-
-\titlespacing*{\subsection}
-  {0pt} % left
-  {4pt plus 2pt minus 2pt} % before
-  {4pt plus 2pt minus 2pt} % after
-
-\titlespacing*{\subsubsection}
-  {0pt} % left
-  {4pt plus 2pt minus 2pt} % before
-  {4pt plus 2pt minus 2pt} % after
-
-% Always load hyperref last.
-\usepackage{hyperref}
-$if(colorlinks)$
-\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
-$endif$
-
-\hypersetup{unicode=true,
-$if(title-meta)$
-            pdftitle={$if(author-meta)$$author-meta$: $endif$ $title-meta$ (Curriculum Vitae)},
-$endif$
-$if(author-meta)$
-            pdfauthor={$author-meta$},
-$endif$
-$if(keywords)$
-            pdfkeywords={$for(keywords)$$keywords$$sep$; $endfor$},
-$endif$
-            colorlinks=true,
-            linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$,
-            citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
-            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
-            breaklinks=true, bookmarks=true}
-\urlstyle{same}  % don't use monospace font for urls
-
-% Make AP style (kinda) dates for the updated/today field
-
-\usepackage{datetime}
-\newdateformat{apstylekinda}{%
-  \shortmonthname[\THEMONTH]. \THEDAY, \THEYEAR}
-
-% \emph{Updated:} \apstylekinda\today
-% ^ removed from that front bar.
-
-\usepackage{orcidlink}
-%\usepackage{academicons}
-%\definecolor{orcidlogocol}{HTML}{A6CE39}
-% \newcommand{\orcid}[1]{\href{https://orcid.org/#1}{\textcolor[HTML]{A6CE39}{\aiOrcid}}}
-
-\usepackage{multicol}
-% multicol package for organizing addresses into personal and work columns
+% Begin document
+% ----------------------------------
 
 \begin{document}
 
-\thispagestyle{firstpage} % Apply the custom page style to the first page
-\pagestyle{regular} % Apply the regular page style to subsequent pages (optional)
+\thispagestyle{firstpage} % Custom page style for the first page
+\pagestyle{regular} % Regular page style for subsequent pages
 
 \centerline{\huge \sffamily \bfseries $author$}
 
-\vspace{2 mm}
-
+\vspace{2mm}
 \hrule
+\vspace{2mm}
 
-\vspace{2 mm}
-
-$if(jobtitle)$\moveleft.5\hoffset\centerline{$jobtitle$}$endif$
+$if(jobtitle)$
+\centerline{$jobtitle$}
+$endif$
 
 % Contact Information in Two Columns
 \begin{multicols}{2}
+\noindent % Prevents indentation on the first line
 % Left column (Personal contact info)
-$if(paddress)$ $paddress$ $endif$
-$if(pemail)$ \texttt{\href{mailto:$pemail$}{$pemail$}} $endif$
-$if(pphone)$ $pphone$ $endif$
-$if(pweb)$ \texttt{\href{http://$pweb$}{$pweb$}} $endif$
-\columnbreak % Force break to the next column
+$if(paddress)$
+$paddress$
+$endif$
+$if(pemail)$
+\texttt{\href{mailto:$pemail$}{$pemail$}}
+$endif$
+$if(pphone)$
+$pphone$
+$endif$
+$if(pweb)$
+\texttt{\href{http://$pweb$}{$pweb$}}
+$endif$
+
+\columnbreak % Moves to the right column
+
 % Right column (Professional contact info)
-$if(waddress)$ $waddress$ $endif$
-$if(wemail)$ \texttt{\href{mailto:$wemail$}{$wemail$}} $endif$
-$if(wphone)$ $wphone$ $endif$
-$if(wweb)$ \texttt{\href{http://$wweb$}{$wweb$}} $endif$
+$if(waddress)$
+$waddress$
+$endif$
+$if(wemail)$
+\texttt{\href{mailto:$wemail$}{$wemail$}}
+$endif$
+$if(wphone)$
+$wphone$
+$endif$
+$if(wweb)$
+\texttt{\href{http://$wweb$}{$wweb$}}
+$endif$
 \end{multicols}
 
-
-% \moveleft.5\hoffset\centerline{$if(paddress)$ $paddress$ $endif$ $if(pemail)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:}{\tt $pemail$} \hspace{1 mm}$endif$ $if(pphone)$$if(fontawesome)$ \faPhone \hspace{1 mm}$else$\emph{Phone:}$endif$ $pphone$ $endif$ $if(pweb)$$if(fontawesome)$\faGlobe \hspace{1 mm}$else$\emph{Web:}$endif$ \href{http://$pweb$}{\tt $pweb$} \hspace{1 mm} $endif$} 
-
-% \moveleft.5\hoffset\centerline{$if(waddress)$ $waddress$ $endif$ $if(wemail)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:}{\tt $wemail$} \hspace{1 mm}$endif$ $if(wphone)$$if(fontawesome)$ \faPhone \hspace{1 mm}$else$\emph{Phone:}$endif$ $wphone$ $endif$ $if(wweb)$$if(fontawesome)$\faGlobe \hspace{1 mm}$else$\emph{Web:}$endif$ \href{http://$wweb$}{\tt $wweb$} \hspace{1 mm} $endif$} 
-
-% \moveleft.5\hoffset\centerline{ $if(googlescholar)$$if(academicons)$\aigoogle-scholar \hspace{.5 mm}$else$\emph{Google Scholar:}$endif$ \href{https://scholar.google.com/$googlescholar$}{\tt $googlescholar$} \hspace{1 mm}$endif$ $if(researchgate)$$if(academicons)$\airesearchgate \hspace{.5 mm}$else$\emph{ResearchGate:}$endif$ \href{https://www.researchgate.net/profile/$researchgate$}{\tt $researchgate$}$endif$ $if(github)$$if(fontawesome)$\faGithub \hspace{1 mm}$else$\emph{Github:}$endif$ \href{http://github.com/$github$}{\tt $github$} \hspace{1 mm}$endif$ $if(orcid)$$if(fontawesome)$\orcidlink{$orcid$} \hspace{.5 mm}$else$\emph{ORCID:}$endif$ \href{https://orcid.org/$orcid$}{\tt $orcid$} \hspace{1 mm}$endif$ $if(osf)$$if(fontawesome)$\faUnlock \hspace{1 mm}$else$\emph{osf:}$endif$ \href{https:/osf.io/$osf$}{\tt osf.io/$osf$} $endif$}
-
-% \moveleft.5\hoffset\centerline{ $if(linkedin)$$if(fontawesome)$\faLinkedIn \hspace{1 mm}$else$\emph{LinkedIn:}$endif$ \href{https:/linkedin.com/in/$linkedin$}{\tt $linkedin$} \hspace{1 mm} $endif$ $if(twitter)$$if(fontawesome)$\faTwitter \hspace{1 mm}$else$\emph{Twitter:}$endif$ \href{https:/twitter.com/$twitter$}{\tt $twitter$} $endif$}
-
-\vspace{2 mm}
-
+\vspace{2mm}
 \hrule
 
 $body$
 
+% Bibliography (if applicable)
 $if(natbib)$
 $if(bibliography)$
 $if(biblio-title)$
@@ -353,16 +193,24 @@ $else$
 $endif$
 $endif$
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
-
 $endif$
 $endif$
 $if(biblatex)$
 \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-
 $endif$
+
 $for(include-after)$
 $include-after$
-
 $endfor$
+
 \end{document}
+
+
+% \moveleft.5\hoffset\centerline{$if(paddress)$ $paddress$ $endif$ $if(pemail)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:}{\tt $pemail$} \hspace{1 mm}$endif$ $if(pphone)$$if(fontawesome)$ \faPhone \hspace{1 mm}$else$\emph{Phone:}$endif$ $pphone$ $endif$ $if(pweb)$$if(fontawesome)$\faGlobe \hspace{1 mm}$else$\emph{Web:}$endif$ \href{http://$pweb$}{\tt $pweb$} \hspace{1 mm} $endif$} 
+
+% \moveleft.5\hoffset\centerline{$if(waddress)$ $waddress$ $endif$ $if(wemail)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:}{\tt $wemail$} \hspace{1 mm}$endif$ $if(wphone)$$if(fontawesome)$ \faPhone \hspace{1 mm}$else$\emph{Phone:}$endif$ $wphone$ $endif$ $if(wweb)$$if(fontawesome)$\faGlobe \hspace{1 mm}$else$\emph{Web:}$endif$ \href{http://$wweb$}{\tt $wweb$} \hspace{1 mm} $endif$} 
+
+% \moveleft.5\hoffset\centerline{ $if(googlescholar)$$if(academicons)$\aigoogle-scholar \hspace{.5 mm}$else$\emph{Google Scholar:}$endif$ \href{https://scholar.google.com/$googlescholar$}{\tt $googlescholar$} \hspace{1 mm}$endif$ $if(researchgate)$$if(academicons)$\airesearchgate \hspace{.5 mm}$else$\emph{ResearchGate:}$endif$ \href{https://www.researchgate.net/profile/$researchgate$}{\tt $researchgate$}$endif$ $if(github)$$if(fontawesome)$\faGithub \hspace{1 mm}$else$\emph{Github:}$endif$ \href{http://github.com/$github$}{\tt $github$} \hspace{1 mm}$endif$ $if(orcid)$$if(fontawesome)$\orcidlink{$orcid$} \hspace{.5 mm}$else$\emph{ORCID:}$endif$ \href{https://orcid.org/$orcid$}{\tt $orcid$} \hspace{1 mm}$endif$ $if(osf)$$if(fontawesome)$\faUnlock \hspace{1 mm}$else$\emph{osf:}$endif$ \href{https:/osf.io/$osf$}{\tt osf.io/$osf$} $endif$}
+
+% \moveleft.5\hoffset\centerline{ $if(linkedin)$$if(fontawesome)$\faLinkedIn \hspace{1 mm}$else$\emph{LinkedIn:}$endif$ \href{https:/linkedin.com/in/$linkedin$}{\tt $linkedin$} \hspace{1 mm} $endif$ $if(twitter)$$if(fontawesome)$\faTwitter \hspace{1 mm}$else$\emph{Twitter:}$endif$ \href{https:/twitter.com/$twitter$}{\tt $twitter$} $endif$}
 
