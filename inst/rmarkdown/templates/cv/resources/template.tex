@@ -1,8 +1,10 @@
 % CV ----
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 
-% Set 1" margins
+% Set 1" margins adn breaks
 \usepackage[margin=1in]{geometry}
+\widowpenalty10000
+\clubpenalty10000
 
 % Basic packages
 $if(fontfamily)$
