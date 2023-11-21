@@ -173,18 +173,14 @@ $if(jobtitle)$
 \centerline{$jobtitle$}
 $endif$
 
-\vspace{2mm}
-
 \hrule
-
-\vspace{2mm}
 
 % Contact Information in Two Columns
 \begin{multicols}{2}
 \noindent % Prevents indentation on the first line
 % Left column (Personal contact info)
 \sffamily{\bfseries{Personal}}\\
-
+\rmfamily
 $if(paddress)$
 \faMapMarker \hspace{1 mm} $paddress$
 $endif$\\
@@ -203,6 +199,7 @@ $endif$
 % Right column (Professional contact info)
 \noindent % Prevents indentation on the first line
 \sffamily{\bfseries{Work}}\\
+\rmfamily
 $if(waddress)$
 \faMapMarker \hspace{1 mm} $waddress$
 $endif$\\
@@ -217,9 +214,7 @@ $if(wweb)$
 $endif$
 \end{multicols}
 
-\vspace{2mm}
 \hrule
-\vspace{2mm}
 
 $body$
 
