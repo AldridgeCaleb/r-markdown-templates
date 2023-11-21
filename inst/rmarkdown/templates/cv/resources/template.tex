@@ -181,7 +181,7 @@ $endif$
 \begin{multicols}{2}
 \noindent % Prevents indentation on the first line
 % Left column (Personal contact info)
-\centerline{\emph{Personal}}
+\sffamily{Personal}
 $if(paddress)$
 \faMapMarker \hspace{1 mm} $paddress$
 $endif$\\
@@ -198,7 +198,8 @@ $endif$
 \columnbreak % Moves to the right column
 
 % Right column (Professional contact info)
-\centerline{\emph{Work}}
+\noindent % Prevents indentation on the first line
+\sffamily{Work}
 $if(waddress)$
 \faMapMarker \hspace{1 mm} $waddress$
 $endif$\\
