@@ -1,7 +1,7 @@
 % CV ----
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 
-% Set 1" margins adn breaks
+% Set 1" margins and breaks
 \usepackage[margin=1in]{geometry}
 \widowpenalty10000
 \clubpenalty10000
@@ -177,11 +177,14 @@ $endif$
 
 \hrule
 
+\vspace{2mm}
+
 % Contact Information in Two Columns
 \begin{multicols}{2}
 \noindent % Prevents indentation on the first line
 % Left column (Personal contact info)
-\sffamily{\bfseries Personal}\\
+\sffamily{\bfseries{Personal}}\\
+
 $if(paddress)$
 \faMapMarker \hspace{1 mm} $paddress$
 $endif$\\
@@ -199,7 +202,7 @@ $endif$
 
 % Right column (Professional contact info)
 \noindent % Prevents indentation on the first line
-\sffamily{\bfseries Work}\\
+\sffamily{\bfseries{Work}}\\
 $if(waddress)$
 \faMapMarker \hspace{1 mm} $waddress$
 $endif$\\
@@ -214,7 +217,9 @@ $if(wweb)$
 $endif$
 \end{multicols}
 
+\vspace{2mm}
 \hrule
+\vspace{2mm}
 
 $body$
 
