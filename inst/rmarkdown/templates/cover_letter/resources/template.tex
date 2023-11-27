@@ -1,3 +1,4 @@
+\documentclass[
 \PassOptionsToPackage{RTLdocument}{bidi}
 \PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
 \PassOptionsToPackage{hyphens}{url}
@@ -56,7 +57,6 @@ $endif$
 $if(CJKmainfont)$
 $endif$
 %
-\documentclass[
 $if(fontsize)$
 $fontsize$,
 $endif$
@@ -509,6 +509,8 @@ $if(fontawesome)$\usepackage{fontawesome}$else$$endif$
 \rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
 }
 
+
+
 \begin{document}
 \thispagestyle{firstpage} % Apply the custom page style to the first page
 \pagestyle{regular} % Apply the regular page style to subsequent pages (optional)
@@ -611,21 +613,6 @@ $if(title)$\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}$endif$
 $if(subtitle)$\subtitle{$subtitle$}$endif$
 \author{$for(author)$$author$$sep$ \and $endfor$}
 \date{$date$}
-
-% Begin Document
-\begin{document}
-\thispagestyle{firstpage}
-\pagestyle{regular}
-\maketitle
-
-% Author Contact Information
-\begin{flushright}
-{\large \sffamily \bfseries $author$}\\[.35ex]
-\emph{\small $address$}\\[.35ex]
-$if(phone)$$if(fontawesome)$\faPhone \hspace{1 mm}$endif$\small{$phone$}\\$endif$
-$if(email)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$endif$\small{\tt $email$}\\$endif$
-$if(url)$$if(fontawesome)$\faGlobe \hspace{1 mm}$endif$\small{\href{http://$url$}{\tt $url$}}\\$endif$
-\end{flushright}
 
 % Document Body
 $body$
