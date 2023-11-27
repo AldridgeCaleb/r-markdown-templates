@@ -1,73 +1,60 @@
-% Basic document class with options
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+$if(colorlinks)$
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+$endif$
+$if(dir)$
+$if(latex-dir-rtl)$
+\PassOptionsToPackage{RTLdocument}{bidi}
+$endif$
+$endif$
+$if(CJKmainfont)$
+\PassOptionsToPackage{space}{xeCJK}
+$endif$
+
+% Document Class
 \documentclass[
-  $if(fontsize)$$fontsize$,$endif$
-  $if(lang)$$babel-lang$,$endif$
-  $if(papersize)$$papersize$paper,$endif$
-  $for(classoption)$$classoption$$sep$,$endfor$
+$if(fontsize)$ $fontsize$, $endif$
+$if(lang)$ $babel-lang$, $endif$
+$if(papersize)$ $papersize$paper, $endif$
+$if(beamer)$ ignorenonframetext, $if(handout)$ handout, $endif$ $if(aspectratio)$ aspectratio=$aspectratio$, $endif$ $endif$
+$for(classoption)$ $classoption$$sep$, $endfor$
 ]{$documentclass$}
 
-% Essential package imports
+% Packages
+$if(beamer)$
+$if(background-image)$ \usebackgroundtemplate{\includegraphics[width=\paperwidth]{$background-image$}} $endif$
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbols$if(navigation)$$navigation$$else$empty$endif$
+$for(beameroption)$ \setbeameroption{$beameroption$} $endfor$
+$endif$
+$if(beamerarticle)$ \usepackage{beamerarticle} $endif$
+$if(fontfamily)$ \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$} $else$ \usepackage{lmodern} $endif$
+$if(linestretch)$ \usepackage{setspace} $endif$
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
-\usepackage{xcolor}
-\usepackage{graphicx}
-\usepackage{fancyhdr, lastpage}
-\usepackage{longtable, booktabs}
-\usepackage{hyperref}
-\usepackage[margin=1in]{geometry}
-\usepackage{setspace}
-\usepackage{titlesec}
-
-% Font settings
-$if(mainfont)$\setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}$endif$
-$if(sansfont)$\setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}$endif$
-$if(monofont)$\setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$}$endif$
-
-% Color definitions
-\definecolor{black}{rgb}{0, 0, 0}
-\definecolor{grey}{rgb}{0.5, 0.5, 0.5}
-
-% Title formats
-\titleformat*{\section}{\Large\sffamily\bfseries\color{black}}
-\titleformat*{\subsection}{\large\sffamily\bfseries\color{black}}
-\titleformat*{\subsubsection}{\normalsize\sffamily\bfseries\itshape\color{black}}
-
-% Document title and author
-$if(title)$\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}$endif$
-$if(subtitle)$\subtitle{$subtitle$}$endif$
-\author{$for(author)$$author$$sep$ \and $endfor$}
-\date{$date$}
-
-% Begin document
-\begin{document}
-\thispagestyle{firstpage}
-\pagestyle{regular}
-\maketitle
-
-% Author contact information
-\begin{flushright}
-{\large \sffamily \bfseries $author$}\\[.35ex]
-\emph{\small $address$}\\[.35ex]
-$if(phone)$$if(fontawesome)$\faPhone \hspace{1 mm}$endif$\small{$phone$}\\$endif$
-$if(email)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$endif$\small{\tt $email$}\\$endif$
-$if(url)$$if(fontawesome)$\faGlobe \hspace{1 mm}$endif$\small{\href{http://$url$}{\tt $url$}}\\$endif$
-\end{flushright}
-
-% Document body
-$body$
-
-% Bibliography
-$if(natbib)$
-$if(bibliography)$
-  \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+$if(mathspec)$
+  \ifxetex \usepackage{mathspec} \else \usepackage{unicode-math} \fi
+$else$ \usepackage{unicode-math} $endif$
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+$if(mainfont)$ \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$} $endif$
+$if(sansfont)$ \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$} $endif$
+$if(monofont)$ \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$} $endif$
+$for(fontfamilies)$ \newfontfamily{$fontfamilies.name$}[$for(fontfamilies.options)$$fontfamilies.options$$sep$,$endfor$]{$fontfamilies.font$} $endfor$
+$if(mathfont)$
+$if(mathspec)$ \ifxetex \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$} \else \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$} \fi $else$ \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$} $endif$
 $endif$
+$if(CJKmainfont)$
+  \ifxetex \usepackage{xeCJK} \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$} \fi
 $endif$
-$if(biblatex)$
-  \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-$endif$
-
-% Additional includes
-$for(include-after)$
-$include-after$
-$endfor$
-\end{document}
+$if(luatexjapresetoptions)$ \ifluatex \usepackage[$for(l
