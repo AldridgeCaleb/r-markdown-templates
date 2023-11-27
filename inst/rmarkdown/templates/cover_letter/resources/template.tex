@@ -1,53 +1,52 @@
-% Document Class and Options
+% Package Options
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
 \documentclass[
-$if(fontsize)$ $fontsize$, $endif$
-$if(lang)$ $babel-lang$, $endif$
-$if(papersize)$ $papersize$paper, $endif$
-$for(classoption)$ $classoption$$sep$, $endfor$
+  $if(fontsize)$$fontsize$,$endif$
+  $if(lang)$$babel-lang$,$endif$
+  $if(papersize)$$papersize$paper,$endif$
+  $for(classoption)$$classoption$$sep$,$endfor$
 ]{$documentclass$}
 
-% Basic Packages
-\usepackage{amssymb, amsmath}
+% Basic Package Imports
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{fancyhdr, lastpage}
-\usepackage{titlesec}
 \usepackage{longtable, booktabs}
 \usepackage{hyperref}
 \usepackage[margin=1in]{geometry}
 \usepackage{setspace}
+\usepackage{titlesec}
 
-% Additional Packages and Options
-$if(beamer)$ % Beamer-specific settings $endif$
-$if(fontfamily)$ \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$} $else$ \usepackage{lmodern} $endif$
-$if(mainfont)$ \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$} $endif$
-$if(sansfont)$ \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$} $endif$
-$if(monofont)$ \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$} $endif$
-$if(natbib)$ \usepackage[$natbiboptions$]{natbib} \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$} $endif$
-$if(biblatex)$ \usepackage[$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex} $for(bibliography)$ \addbibresource{$bibliography$} $endfor$ $endif$
+% Font Settings
+$if(mainfont)$\setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}$endif$
+$if(sansfont)$\setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}$endif$
+$if(monofont)$\setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$}$endif$
 
-% Custom Settings and Commands
+% Color Definitions
 \definecolor{black}{rgb}{0, 0, 0}
 \definecolor{grey}{rgb}{0.5, 0.5, 0.5}
+
+% Title Formats
 \titleformat*{\section}{\Large\sffamily\bfseries\color{black}}
 \titleformat*{\subsection}{\large\sffamily\bfseries\color{black}}
 \titleformat*{\subsubsection}{\normalsize\sffamily\bfseries\itshape\color{black}}
-\setlength{\emergencystretch}{3em} % Prevent overfull lines
-\setcounter{secnumdepth}{-\maxdimen} % Remove section numbering
 
-% Title, Author, Date
-$if(title)$ \title{$title$$if(thanks)$\thanks{$thanks$}$endif$} $endif$
-$if(subtitle)$ \subtitle{$subtitle$} $endif$
+% Document Title and Author
+$if(title)$\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}$endif$
+$if(subtitle)$\subtitle{$subtitle$}$endif$
 \author{$for(author)$$author$$sep$ \and $endfor$}
 \date{$date$}
 
 % Begin Document
 \begin{document}
-\thispagestyle{firstpage} % Custom page style for the first page
-\pagestyle{regular} % Regular page style for subsequent pages
-
-% Title and Author Information
+\thispagestyle{firstpage}
+\pagestyle{regular}
 \maketitle
+
+% Author Contact Information
 \begin{flushright}
 {\large \sffamily \bfseries $author$}\\[.35ex]
 \emph{\small $address$}\\[.35ex]
@@ -60,9 +59,17 @@ $if(url)$$if(fontawesome)$\faGlobe \hspace{1 mm}$endif$\small{\href{http://$url$
 $body$
 
 % Bibliography
-$if(natbib)$ $if(bibliography)$ \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$} $endif$ $endif$
-$if(biblatex)$ \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$ $endif$
+$if(natbib)$
+$if(bibliography)$
+  \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+$endif$
+$if(biblatex)$
+  \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+$endif$
 
 % Additional Includes
-$for(include-after)$ $include-after$ $endfor$
+$for(include-after)$
+$include-after$
+$endfor$
 \end{document}
