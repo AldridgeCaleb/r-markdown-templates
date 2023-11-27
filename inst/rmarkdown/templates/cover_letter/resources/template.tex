@@ -1,48 +1,90 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
-\PassOptionsToPackage{hyphens}{url}
-$if(colorlinks)$
+\PassOptionsToPackage{RTLdocument}{bidi}
 \PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{hyphens}{url}\usepackage[draft,unicode=true]{hyperref}
+\PassOptionsToPackage{hyphens}{url}\usepackage[setpagesize=false, % page size defined by xetex
+\PassOptionsToPackage{space}{xeCJK}
+\PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
+\PassOptionsToPackage{usenames,dvipsnames}{color}
+\usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
+\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+\usepackage[$for(luatexjafontspecoptions)$$luatexjafontspecoptions$$sep$,$endfor$]{luatexja-fontspec}
+\usepackage[$for(luatexjapresetoptions)$$luatexjapresetoptions$$sep$,$endfor$]{luatexja-preset}
+\usepackage[$for(microtypeoptions)$$microtypeoptions$$sep$,$endfor$]{microtype}
+\usepackage[$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
+\usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
+\usepackage[$natbiboptions$]{natbib}
+\usepackage[normalem]{ulem}
+\usepackage[section]{placeins}
+\usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[utf8]{inputenc}
+\usepackage{abstract}
+\usepackage{amssymb,amsmath}
+\usepackage{beamerarticle} % needs to be loaded first
+\usepackage{bidi}
+\usepackage{caption}
+\usepackage{endnotes}
+\usepackage{etoolbox}
+\usepackage{fancyhdr, lastpage}
+\usepackage{fancyvrb}
+\usepackage{graphicx}
+\usepackage{ifxetex,ifluatex}
+\usepackage{kantlipsum}
+\usepackage{listings}
+\usepackage{lmodern}
+\usepackage{longtable,booktabs}
+\usepackage{mathspec}
+\usepackage{parskip}
+\usepackage{pgfpages}
+\usepackage{polyglossia}
+\usepackage{selnolig}  % disable illegal ligatures
+\usepackage{setspace}
+\usepackage{textcomp} % provide euro and other symbols
+\usepackage{titlesec}
+\usepackage{unicode-math}
+\usepackage{xcolor}
+\usepackage{xeCJK}
+
+% Options for packages loaded elsewhere
+$if(colorlinks)$
 $endif$
 $if(dir)$
 $if(latex-dir-rtl)$
-\PassOptionsToPackage{RTLdocument}{bidi}
 $endif$
 $endif$
 $if(CJKmainfont)$
-\PassOptionsToPackage{space}{xeCJK}
 $endif$
 %
 \documentclass[
 $if(fontsize)$
-  $fontsize$,
+$fontsize$,
 $endif$
 $if(lang)$
-  $babel-lang$,
+$babel-lang$,
 $endif$
 $if(papersize)$
-  $papersize$paper,
+$papersize$paper,
 $endif$
 $if(beamer)$
-  ignorenonframetext,
+ignorenonframetext,
 $if(handout)$
-  handout,
+handout,
 $endif$
 $if(aspectratio)$
-  aspectratio=$aspectratio$,
+aspectratio=$aspectratio$,
 $endif$
 $endif$
 $for(classoption)$
-  $classoption$$sep$,
+$classoption$$sep$,
 $endfor$
 ]{$documentclass$}
 $if(beamer)$
 $if(background-image)$
 \usebackgroundtemplate{%
-  \includegraphics[width=\paperwidth]{$background-image$}%
+\includegraphics[width=\paperwidth]{$background-image$}%
 }
 $endif$
-\usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
@@ -55,105 +97,90 @@ $endfor$
 \raggedbottom
 $if(section-titles)$
 \setbeamertemplate{part page}{
-  \centering
-  \begin{beamercolorbox}[sep=16pt,center]{part title}
-    \usebeamerfont{part title}\insertpart\par
-  \end{beamercolorbox}
+\centering
+\begin{beamercolorbox}[sep=16pt,center]{part title}
+\usebeamerfont{part title}\insertpart\par
+\end{beamercolorbox}
 }
 \setbeamertemplate{section page}{
-  \centering
-  \begin{beamercolorbox}[sep=12pt,center]{part title}
-    \usebeamerfont{section title}\insertsection\par
-  \end{beamercolorbox}
+\centering
+\begin{beamercolorbox}[sep=12pt,center]{part title}
+\usebeamerfont{section title}\insertsection\par
+\end{beamercolorbox}
 }
 \setbeamertemplate{subsection page}{
-  \centering
-  \begin{beamercolorbox}[sep=8pt,center]{part title}
-    \usebeamerfont{subsection title}\insertsubsection\par
-  \end{beamercolorbox}
+\centering
+\begin{beamercolorbox}[sep=8pt,center]{part title}
+\usebeamerfont{subsection title}\insertsubsection\par
+\end{beamercolorbox}
 }
 \AtBeginPart{
-  \frame{\partpage}
+\frame{\partpage}
 }
 \AtBeginSection{
-  \ifbibliography
-  \else
-    \frame{\sectionpage}
-  \fi
+\ifbibliography
+\else
+\frame{\sectionpage}
+\fi
 }
 \AtBeginSubsection{
-  \frame{\subsectionpage}
+\frame{\subsectionpage}
 }
 $endif$
 $endif$
 $if(beamerarticle)$
-\usepackage{beamerarticle} % needs to be loaded first
 $endif$
 $if(fontfamily)$
-\usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
 $else$
-\usepackage{lmodern}
 $endif$
 $if(linestretch)$
-\usepackage{setspace}
 $endif$
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
-  \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
 $if(mathspec)$
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{unicode-math}
-  \fi
+\ifxetex
+\else
+\fi
 $else$
-  \usepackage{unicode-math}
 $endif$
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\defaultfontfeatures{Scale=MatchLowercase}
+\defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 $if(mainfont)$
-  \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
+\setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
 $endif$
 $if(sansfont)$
-  \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
+\setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
 $endif$
 $if(monofont)$
-  \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$}
+\setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$}
 $endif$
 $for(fontfamilies)$
-  \newfontfamily{$fontfamilies.name$}[$for(fontfamilies.options)$$fontfamilies.options$$sep$,$endfor$]{$fontfamilies.font$}
+\newfontfamily{$fontfamilies.name$}[$for(fontfamilies.options)$$fontfamilies.options$$sep$,$endfor$]{$fontfamilies.font$}
 $endfor$
 $if(mathfont)$
 $if(mathspec)$
-  \ifxetex
-    \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-  \else
-    \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-  \fi
+\ifxetex
+\setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+\else
+\setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+\fi
 $else$
-  \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+\setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
 $endif$
 $endif$
 $if(CJKmainfont)$
-  \ifxetex
-    \usepackage{xeCJK}
-    \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
-  \fi
+\ifxetex
+\setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
+\fi
 $endif$
 $if(luatexjapresetoptions)$
-  \ifluatex
-    \usepackage[$for(luatexjapresetoptions)$$luatexjapresetoptions$$sep$,$endfor$]{luatexja-preset}
-  \fi
+\ifluatex
+\fi
 $endif$
 $if(CJKmainfont)$
-  \ifluatex
-    \usepackage[$for(luatexjafontspecoptions)$$luatexjafontspecoptions$$sep$,$endfor$]{luatexja-fontspec}
-    \setmainjfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
-  \fi
+\ifluatex
+\setmainjfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
+\fi
 $endif$
 \fi
 $if(beamer)$
@@ -179,27 +206,23 @@ $endif$
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[$for(microtypeoptions)$$microtypeoptions$$sep$,$endfor$]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
 $if(indent)$
 $else$
 \makeatletter
 \@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}
-    }
+\IfFileExists{parskip.sty}{%
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
 }{% if KOMA class
-  \KOMAoptions{parskip=half}}
+\KOMAoptions{parskip=half}}
 \makeatother
 $endif$
 $if(verbatim-in-note)$
-\usepackage{fancyvrb}
 $endif$
-\usepackage{xcolor}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 $if(verbatim-in-note)$
@@ -209,14 +232,12 @@ $if(geometry)$
 $if(beamer)$
 \geometry{$for(geometry)$$geometry$$sep$,$endfor$}
 $else$
-\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 $endif$
 $endif$
 $if(beamer)$
 \newif\ifbibliography
 $endif$
 $if(listings)$
-\usepackage{listings}
 \newcommand{\passthrough}[1]{#1}
 \lstset{defaultdialect=[5.3]Lua}
 \lstset{defaultdialect=[x86masm]Assembler}
@@ -228,16 +249,13 @@ $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
 $if(tables)$
-\usepackage{longtable,booktabs}
 $if(beamer)$
-\usepackage{caption}
 % Make caption package work with longtable
 \makeatletter
 \def\fnum@table{\tablename~\thetable}
 \makeatother
 $else$
 % Correct order of tables after \paragraph or \subparagraph
-\usepackage{etoolbox}
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
@@ -247,7 +265,6 @@ $else$
 $endif$
 $endif$
 $if(graphics)$
-\usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -266,13 +283,12 @@ $if(links-as-notes)$
 \DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
 $endif$
 $if(strikeout)$
-\usepackage[normalem]{ulem}
 % Avoid problems with \sout in headers with hyperref
 \pdfstringdefDisableCommands{\renewcommand{\sout}{}}
 $endif$
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 $if(numbersections)$
 \setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
 $else$
@@ -283,56 +299,49 @@ $else$
 $if(block-headings)$
 % Make \paragraph and \subparagraph free-standing
 \ifx\paragraph\undefined\else
-  \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
 \fi
 \ifx\subparagraph\undefined\else
-  \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
 $endif$
 $endif$
 $if(pagestyle)$
 \pagestyle{$pagestyle$}
 $endif$
-
 $if(lang)$
 \ifxetex
-  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
-  \usepackage{polyglossia}
-  \setmainlanguage[$for(polyglossia-lang.options)$$polyglossia-lang.options$$sep$,$endfor$]{$polyglossia-lang.name$}
+% Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
+\setmainlanguage[$for(polyglossia-lang.options)$$polyglossia-lang.options$$sep$,$endfor$]{$polyglossia-lang.name$}
 $for(polyglossia-otherlangs)$
-  \setotherlanguage[$for(polyglossia-otherlangs.options)$$polyglossia-otherlangs.options$$sep$,$endfor$]{$polyglossia-otherlangs.name$}
+\setotherlanguage[$for(polyglossia-otherlangs.options)$$polyglossia-otherlangs.options$$sep$,$endfor$]{$polyglossia-otherlangs.name$}
 $endfor$
 \else
-  \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
 $if(babel-newcommands)$
-  $babel-newcommands$
+$babel-newcommands$
 $endif$
 \fi
 $endif$
 \ifluatex
-  \usepackage{selnolig}  % disable illegal ligatures
 \fi
 $if(dir)$
 \ifxetex
-  % Load bidi as late as possible as it modifies e.g. graphicx
-  \usepackage{bidi}
+% Load bidi as late as possible as it modifies e.g. graphicx
 \fi
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \TeXXeTstate=1
-  \newcommand{\RL}[1]{\beginR #1\endR}
-  \newcommand{\LR}[1]{\beginL #1\endL}
-  \newenvironment{RTL}{\beginR}{\endR}
-  \newenvironment{LTR}{\beginL}{\endL}
+\TeXXeTstate=1
+\newcommand{\RL}[1]{\beginR #1\endR}
+\newcommand{\LR}[1]{\beginL #1\endL}
+\newenvironment{RTL}{\beginR}{\endR}
+\newenvironment{LTR}{\beginL}{\endL}
 \fi
 $endif$
 $if(natbib)$
-\usepackage[$natbiboptions$]{natbib}
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 $if(biblatex)$
-\usepackage[$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
 $for(bibliography)$
 \addbibresource{$bibliography$}
 $endfor$
@@ -341,21 +350,19 @@ $if(csl-refs)$
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newenvironment{cslreferences}%
-  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
-  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
-  {\par}
+{$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+\everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+{\par}
 $endif$
-
 $if(title)$
 \title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
 $endif$
 $if(subtitle)$
 $if(beamer)$
 $else$
-\usepackage{etoolbox}
 \makeatletter
 \providecommand{\subtitle}[1]{% add subtitle to \maketitle
-  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+\apptocmd{\@title}{\par {\large #1 \par}}{}{}
 }
 \makeatother
 $endif$
@@ -374,56 +381,38 @@ $if(logo)$
 \logo{\includegraphics{$logo$}}
 $endif$
 $endif$
-
 % Jesus, okay, everything above this comment is default Pandoc LaTeX template. -----
 % ----------------------------------------------------------------------------------
 % I think I had assumed beamer and LaTex were somehow different templates.
-
-
-\usepackage{kantlipsum}
-
-\usepackage{abstract}
 \renewcommand{\abstractname}{}    % clear the title
 \renewcommand{\absnamepos}{empty} % originally center
-
 \renewenvironment{abstract}
- {{%
-    \setlength{\leftmargin}{0mm}
-    \setlength{\rightmargin}{\leftmargin}%
-  }%
-  \relax}
- {\endlist}
-
+{{%
+\setlength{\leftmargin}{0mm}
+\setlength{\rightmargin}{\leftmargin}%
+}%
+\relax}
+{\endlist}
 \makeatletter
 \def\@maketitle{%
-  \newpage
+\newpage
 %  \null
 %  \vskip 2em%
 %  \begin{center}%
-  \let \footnote \thanks
-  $if(sansitup)$
-    {\fontsize{14.5}{20}\selectfont\bfseries\sffamily\raggedright  \setlength{\parindent}{0pt} \@title \par}%
-    $else$
-    {\fontsize{18}{20}\selectfont\raggedright  \setlength{\parindent}{0pt} \@title \par}
-    $endif$
+\let \footnote \thanks
+$if(sansitup)$
+{\fontsize{14.5}{20}\selectfont\bfseries\sffamily\raggedright  \setlength{\parindent}{0pt} \@title \par}%
+$else$
+{\fontsize{18}{20}\selectfont\raggedright  \setlength{\parindent}{0pt} \@title \par}
+$endif$
 }
 %\fi
 \makeatother
-
-
 $if(title)$
 \title{$title$$if(subtitle)$: $subtitle$$endif$$if(anonymous)$$else$$if(thanks)$\thanks{$thanks$} $endif$$endif$ }
-$endif$ 
-
-
-
+$endif$
 %$if(anonymous)$$else$\author{$for(author)$\Large $author.name$\vspace{0.05in} \newline\normalsize\emph{$author.affiliation$}  $sep$ \and $endfor$}$endif$
-
-
 \date{}
-
-\usepackage{titlesec}
-
 % $if(sansitup)$\sffamily\uppercase$else$$endif$
 % \titleformat*{\section}{\large\bfseries$if(sansitup)$\sffamily\uppercase$else$$endif$}
 % \titleformat*{\subsection}{$if(sansitup)$\bfseries\sffamily$else$\normalsize\itshape$endif$} % \small\uppercase
@@ -438,122 +427,91 @@ $endif$
 \titleformat*{\section}{\Large\sffamily\bfseries\color{black}} % Use \arialnarrow here
 \titleformat*{\subsection}{\large\sffamily\bfseries\color{black}} % \bfseries
 \titleformat*{\subsubsection}{\normalsize\sffamily\bfseries\itshape\color{black}}
-
 \titleformat*{\paragraph}{\normalsize\itshape}
 \titleformat*{\subparagraph}{\normalsize\itshape}
-
 % add some other packages ----------
-
 % \usepackage{multicol}
 % This should regulate where figures float
 % See: https://tex.stackexchange.com/questions/2275/keeping-tables-figures-close-to-where-they-are-mentioned
-\usepackage[section]{placeins}
-
-
-
 \makeatletter
 \@ifpackageloaded{hyperref}{}{%
 \ifxetex
-  \PassOptionsToPackage{hyphens}{url}\usepackage[setpagesize=false, % page size defined by xetex
-              unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
+unicode=false, % unicode breaks when used with xetex
+xetex]{hyperref}
 \else
-  \PassOptionsToPackage{hyphens}{url}\usepackage[draft,unicode=true]{hyperref}
 \fi
 }
-
 \@ifpackageloaded{color}{
-    \PassOptionsToPackage{usenames,dvipsnames}{color}
 }{%
-    \usepackage[usenames,dvipsnames]{color}
 }
 \makeatother
 \hypersetup{breaklinks=true,
-            bookmarks=true,
-            pdfauthor={$if(anonymous)$$else$$for(author)$$author.name$ ($author.affiliation$)$sep$ and $endfor$$endif$},
-             pdfkeywords = {$if(keywords)$$keywords$$endif$},  
-            pdftitle={$title$$if(subtitle)$: $subtitle$$endif$},
-            colorlinks=true,
-            citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
-            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
-            linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
-            pdfborder={0 0 0}}
+bookmarks=true,
+pdfauthor={$if(anonymous)$$else$$for(author)$$author.name$ ($author.affiliation$)$sep$ and $endfor$$endif$},
+pdfkeywords = {$if(keywords)$$keywords$$endif$},
+pdftitle={$title$$if(subtitle)$: $subtitle$$endif$},
+colorlinks=true,
+citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
+urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
+linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
+pdfborder={0 0 0}}
 \urlstyle{same}  % don't use monospace font for urls
-
 % Add an option for endnotes. -----
-
 $if(endnotes)$
-\usepackage{endnotes}
 \renewcommand{\enotesize}{\normalsize}
 \let\footnote=\endnote
 $endif$
-
 $if(appendix)$
 \renewcommand*\thetable{$appendixletter$.\arabic{table}}
 \renewcommand*\thefigure{$appendixletter$.\arabic{figure}}
 $endif$
-
 % This will better treat References as a section when using natbib
 % https://tex.stackexchange.com/questions/49962/bibliography-title-fontsize-problem-with-bibtex-and-the-natbib-package
-$if(natbib)$ 
+$if(natbib)$
 \renewcommand\bibsection{%
-   \section*{References}%
-   \markboth{\MakeUppercase{\refname}}{\MakeUppercase{\refname}}%
-  }%
+\section*{References}%
+\markboth{\MakeUppercase{\refname}}{\MakeUppercase{\refname}}%
+}%
 $else$
 $endif$
-
 % set default figure placement to htbp
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-
-
-
 $for(header-includes)$
 $header-includes$
 $endfor$
-
 \newtheorem{hypothesis}{Hypothesis}
-
 $if(fontawesome)$\usepackage{fontawesome}$else$$endif$
-
 \newcommand{\blankline}{\quad\pagebreak[2]}
-\usepackage{graphicx}
-
 % Fancyhdr, as I tend to do with these personal documents.
-\usepackage{fancyhdr, lastpage}
 \fancyhf{} % clear all header and footer fields
-
 % Define a custom page style for the first page
 \fancypagestyle{firstpage}{
-  \renewcommand{\headrulewidth}{0.0pt}
-  \renewcommand{\footrulewidth}{0.0pt}
-  \lhead{}
-  \chead{}
-  \rhead{} % Customize right header for first page
-  \lfoot{\scriptsize \sffamily \bfseries $initials$ | $title$}
-  \cfoot{}
-  \rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+\lhead{}
+\chead{}
+\rhead{} % Customize right header for first page
+\lfoot{\scriptsize \sffamily \bfseries $initials$ | $title$}
+\cfoot{}
+\rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
 }
-
 % Define the regular page style for subsequent pages (optional)
 \fancypagestyle{regular}{
-  \renewcommand{\headrulewidth}{0.0pt}
-  \renewcommand{\footrulewidth}{0.0pt}
-  \lhead{}
-  \chead{}
-  \rhead{} % Empty right header for regular pages
-  \lfoot{\scriptsize \sffamily \bfseries $initials$ | $title$}
-  \cfoot{}
-  \rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+\lhead{}
+\chead{}
+\rhead{} % Empty right header for regular pages
+\lfoot{\scriptsize \sffamily \bfseries $initials$ | $title$}
+\cfoot{}
+\rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
 }
 
 \begin{document}
-
 \thispagestyle{firstpage} % Apply the custom page style to the first page
 \pagestyle{regular} % Apply the regular page style to subsequent pages (optional)
-
 \hfill
 \begin{minipage}[t]{1\textwidth}
 \raggedleft%
@@ -565,31 +523,22 @@ $if(url)$$if(fontawesome)$\faGlobe \hspace{1 mm}$else$$endif$ \small{\href{http:
 \hspace{1cm} \\
 $if(date)$ {\sffamily \bfseries $date$} \\ $else$$endif$
 \end{minipage}
-
-% \vspace*{1em} 
-
+% \vspace*{1em}
 $if(greetings)$
 \vspace*{1em}
-
 $greetings$
-
 \vspace*{1em}
-
-$else$$endif$ 
-
+$else$$endif$
 % $if(date)$$date$
-% 
-% \vspace*{1em} 
+%
+% \vspace*{1em}
 % $else$$endif$
-
 % $if(pandocparas)$
 % $else$
 % \setlength{\parindent}{16pt}
 % \setlength{\parskip}{0pt}
 % $endif$
-
 $body$
-
 $if(has-frontmatter)$
 \backmatter
 $endif$
@@ -604,41 +553,37 @@ $endif$
 $endif$
 $if(beamer)$
 \begin{frame}[allowframebreaks]{$biblio-title$}
-  \bibliographytrue
+\bibliographytrue
 $endif$
-  \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 $if(beamer)$
 \end{frame}
 $endif$
-
 $endif$
 $endif$
 $if(biblatex)$
 $if(beamer)$
 \begin{frame}[allowframebreaks]{$biblio-title$}
-  \bibliographytrue
-  \printbibliography[heading=none]
+\bibliographytrue
+\printbibliography[heading=none]
 \end{frame}
 $else$
 \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
 $endif$
-
 $endif$
 $for(include-after)$
 $include-after$
-
 $endfor$
 \end{document}
 % Package Options
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \documentclass[
-  $if(fontsize)$$fontsize$,$endif$
-  $if(lang)$$babel-lang$,$endif$
-  $if(papersize)$$papersize$paper,$endif$
-  $for(classoption)$$classoption$$sep$,$endfor$
+$if(fontsize)$$fontsize$,$endif$
+$if(lang)$$babel-lang$,$endif$
+$if(papersize)$$papersize$paper,$endif$
+$for(classoption)$$classoption$$sep$,$endfor$
 ]{$documentclass$}
-
 % Basic Package Imports
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -650,57 +595,20 @@ $endfor$
 \usepackage[margin=1in]{geometry}
 \usepackage{setspace}
 \usepackage{titlesec}
-
 % Font Settings
 $if(mainfont)$\setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}$endif$
 $if(sansfont)$\setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}$endif$
 $if(monofont)$\setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$}$endif$
-
 % Color Definitions
 \definecolor{black}{rgb}{0, 0, 0}
 \definecolor{grey}{rgb}{0.5, 0.5, 0.5}
-
 % Title Formats
 \titleformat*{\section}{\Large\sffamily\bfseries\color{black}}
 \titleformat*{\subsection}{\large\sffamily\bfseries\color{black}}
 \titleformat*{\subsubsection}{\normalsize\sffamily\bfseries\itshape\color{black}}
-
 % Document Title and Author
 $if(title)$\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}$endif$
 $if(subtitle)$\subtitle{$subtitle$}$endif$
 \author{$for(author)$$author$$sep$ \and $endfor$}
 \date{$date$}
-
 % Begin Document
-\begin{document}
-\thispagestyle{firstpage}
-\pagestyle{regular}
-\maketitle
-
-% Author Contact Information
-\begin{flushright}
-{\large \sffamily \bfseries $author$}\\[.35ex]
-\emph{\small $address$}\\[.35ex]
-$if(phone)$$if(fontawesome)$\faPhone \hspace{1 mm}$endif$\small{$phone$}\\$endif$
-$if(email)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$endif$\small{\tt $email$}\\$endif$
-$if(url)$$if(fontawesome)$\faGlobe \hspace{1 mm}$endif$\small{\href{http://$url$}{\tt $url$}}\\$endif$
-\end{flushright}
-
-% Document Body
-$body$
-
-% Bibliography
-$if(natbib)$
-$if(bibliography)$
-  \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
-$endif$
-$endif$
-$if(biblatex)$
-  \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-$endif$
-
-% Additional Includes
-$for(include-after)$
-$include-after$
-$endfor$
-\end{document}
