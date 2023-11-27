@@ -1,3 +1,4 @@
+\documentclass[
 \PassOptionsToPackage{RTLdocument}{bidi}
 \PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
 \PassOptionsToPackage{hyphens}{url}
@@ -56,7 +57,6 @@ $endif$
 $if(CJKmainfont)$
 $endif$
 %
-\documentclass[
 $if(fontsize)$
 $fontsize$,
 $endif$
@@ -508,6 +508,8 @@ $if(fontawesome)$\usepackage{fontawesome}$else$$endif$
 \cfoot{}
 \rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
 }
+
+
 
 \begin{document}
 \thispagestyle{firstpage} % Apply the custom page style to the first page
