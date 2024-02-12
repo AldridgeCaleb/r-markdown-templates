@@ -6,8 +6,8 @@ documents, primarily for conversion to LaTeX PDFs.
 
 ## Installation
 
-`rmarkdownTemplates` is and will always be a "development" version package intended for
-my personal use, others are welcome to fork/use though. You can install the development version of
+`rmarkdownTemplates` is and will always be a "developmental" package intended for
+my personal use, others are welcome to fork/use. You can install the development version of
 `rmarkdownTemplates` from Github via the `devtools` package. The `remotes` package would probably 
 work too.
 
@@ -28,7 +28,7 @@ development version includes the following templates:
   - **Cover Letter Template**: This is an cover letter template I *began*
     modifying from `stevetemplates` in 2023. You can call it in the YAML
     with `rmarkdownTemplates::cover_letter`.
-  - **Cover Letter Template**: This is an "statement" (e.g., research
+  - **Statement Template**: This is an "statement" (e.g., research
     statement) template I *began* modifying from `stevetemplates` in 2023.
     You can call it in the YAML with `rmarkdownTemplates::statement`.
 
