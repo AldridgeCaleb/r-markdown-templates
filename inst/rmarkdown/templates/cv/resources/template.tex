@@ -146,6 +146,14 @@ $endif$
   pdfauthor={$author-meta$},
 }
 
+% Custom footnote without counter / marker
+\newcommand\blfootnote[1]{
+    \begingroup
+    \renewcommand\thefootnote{}\footnote{#1}
+    \addtocounter{footnote}{-1}
+    \endgroup
+}
+
 % Multicolumn Layout for Addresses
 \usepackage{multicol}
 
