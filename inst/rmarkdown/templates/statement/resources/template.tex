@@ -62,7 +62,6 @@ $endif$
   \rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
 }
 
-
 \usepackage{titlesec}
 
 \titleformat*{\subsection}{\itshape}
@@ -95,7 +94,6 @@ $endif$
             pdfborder={0 0 0}}
 \urlstyle{same}  % don't use monospace font for urls
 
-
 \setcounter{secnumdepth}{0}
 
 $if(listings)$
@@ -127,7 +125,6 @@ $if(graphics)$
 \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
 $endif$
 
-
 $if(natbib)$
 \usepackage{natbib}
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
@@ -156,7 +153,6 @@ $if(author)$
 \author{$for(author)$$author$$sep$ \and $endfor$}
 $endif$
 \date{$date$}
-
 
 \def\citeapos#1{\citeauthor{#1}'s (\citeyear{#1})}
 
@@ -208,7 +204,6 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
-
 \begin{document}  
 
 \thispagestyle{firstpage} % Apply the custom page style to the first page
@@ -224,11 +219,9 @@ $if(email)$\texttt{$email$}$else$TBD$endif$   \\
 
 % \blankline 
   
-
 \hrule
 
 \vspace{6 mm}
-	
 
 $body$
 
@@ -248,9 +241,6 @@ $endif$
 $if(biblatex)$
 \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
 
-
-
-
 $endif$
 $for(include-after)$
 $include-after$
@@ -261,11 +251,7 @@ $endfor$
 \makeatletter
 \def\@maketitle{%
   \newpage
-%  \null
-%  \vskip 2em%
-%  \begin{center}%
   \let \footnote \thanks
     {\fontsize{18}{20}\selectfont\raggedright  \setlength{\parindent}{0pt} \@title \par}%
 }
-%\fi
 \makeatother
