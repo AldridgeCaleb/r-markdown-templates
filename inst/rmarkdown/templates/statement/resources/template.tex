@@ -62,9 +62,7 @@ $endif$
   \rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
 }
 
-
 \usepackage{titlesec}
-
 \titleformat*{\subsection}{\itshape}
 
 \makeatletter
@@ -85,8 +83,8 @@ $endif$
 \makeatother
 \hypersetup{breaklinks=true,
             bookmarks=true,
-            pdfauthor={$for(author)$$author.name$ ($author.affiliation$)$sep$ and $endfor$},
-             pdfkeywords = {$if(keywords)$$keywords$$endif$},  
+            pdfauthor={$if(author)$$for(author)$$author.name$ ($author.affiliation$)$sep$ and $endfor$$endif$},
+            pdfkeywords={$if(keywords)$$keywords$$endif$},
             pdftitle={$title$$if(subtitle)$: $subtitle$$endif$},
             colorlinks=true,
             citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
@@ -94,7 +92,6 @@ $endif$
             linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
             pdfborder={0 0 0}}
 \urlstyle{same}  % don't use monospace font for urls
-
 
 \setcounter{secnumdepth}{0}
 
@@ -127,7 +124,6 @@ $if(graphics)$
 \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
 $endif$
 
-
 $if(natbib)$
 \usepackage{natbib}
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
@@ -152,83 +148,31 @@ $if(subtitle)$
 \providecommand{\subtitle}[1]{}
 \subtitle{$subtitle$}
 $endif$
+
 $if(author)$
 \author{$for(author)$$author$$sep$ \and $endfor$}
 $endif$
 \date{$date$}
 
-
-\def\citeapos#1{\citeauthor{#1}'s (\citeyear{#1})}
-
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
-  \usepackage[utf8]{inputenc}
-$if(euro)$
-  \usepackage{eurosym}
-$endif$
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
-$if(euro)$
-  \newcommand{\euro}{€}
-$endif$
-
-$if(mainfont)$ 
-    \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$} 
-$endif$
-$if(sansfont)$ 
-    \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$} 
-$endif$
-$if(monofont)$ 
-    \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$} 
-$endif$
-
-\usepackage{xcolor}
-\usepackage{titlesec}
-% Define light and dark Microsoft blue colours
-\definecolor{black}{rgb}{.0,.0,.0}
-\definecolor{grey}{rgb}{.5,.5,.5}
-% Define a new fontfamily for the subsubsection font
-% Don't use \fontspec directly to change the font
-% \newfontfamily\subsubsectionfont[Color=MSLightBlue]{Times New Roman}
-% Set formats for each heading level
-\titleformat*{\section}{\Large\sffamily\bfseries\color{black}} % Use \arialnarrow here
-\titleformat*{\subsection}{\large\sffamily\bfseries\color{black}} % \bfseries
-\titleformat*{\subsubsection}{\normalsize\sffamily\bfseries\itshape\color{black}}
-
-% header includes!
-$for(header-includes)$
-$header-includes$
-$endfor$
-
-
-\begin{document}  
+\begin{document}
 
 \thispagestyle{firstpage} % Apply the custom page style to the first page
 \pagestyle{regular} % Apply the regular page style to subsequent pages (optional)
 
-%\thispagestyle{plain} 
-
-\begin{flushleft}\Large \sffamily \bfseries $title$  \end{flushleft}
-	\vspace{1 mm}   
-{\large \sffamily $author$} \\
-%\emph{$affiliation$} \\
-$if(email)$\texttt{$email$}$else$TBD$endif$   \\
-
-% \blankline 
-  
+% Title and Author Information
+\begin{flushleft}
+    \Large \sffamily \bfseries $title$
+\end{flushleft}
+\vspace{1mm}
+$if(author)$
+    {\large \sffamily $author$} \\
+$endif$
+$if(email)$
+    \texttt{$email$} \\
+$endif$
 
 \hrule
-
-\vspace{6 mm}
-	
+\vspace{6mm}
 
 $body$
 
@@ -242,30 +186,15 @@ $else$
 $endif$
 $endif$
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+$endif$
 
-$endif$
-$endif$
 $if(biblatex)$
 \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-
-
-
-
 $endif$
+
 $for(include-after)$
 $include-after$
-
 $endfor$
-\end{document}
 
-\makeatletter
-\def\@maketitle{%
-  \newpage
-%  \null
-%  \vskip 2em%
-%  \begin{center}%
-  \let \footnote \thanks
-    {\fontsize{18}{20}\selectfont\raggedright  \setlength{\parindent}{0pt} \@title \par}%
-}
-%\fi
-\makeatother
+\end{document}
