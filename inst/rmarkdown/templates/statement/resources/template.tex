@@ -1,200 +1,91 @@
-\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{article}
-\usepackage[$geometry$]{geometry}
-\newcommand*{\authorfont}{\fontfamily{phv}\selectfont}
-$if(fontfamily)$
-\usepackage[$fontfamilyoptions$]{$fontfamily$}
-$else$
-\usepackage{lmodern}
-$endif$
-\usepackage{abstract}
-\renewcommand{\abstractname}{}    % clear the title
-%\renewcommand{\absnamepos}{empty} % originally center
-\newcommand{\blankline}{\quad\pagebreak[2]}
+\documentclass[
+  11pt,  % Font size
+  a4paper,  % Paper size
+]{article}
 
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}} 
-\usepackage{longtable,booktabs}
-
-\usepackage{parskip}
-\usepackage{titlesec}
-\titleformat*{\section}{\Large\sffamily\bfseries} % Use \arialnarrow here
-\titleformat*{\subsection}{\large\sffamily\bfseries} % \bfseries
-\titleformat*{\subsubsection}{\normalsize\sffamily\bfseries\itshape}
-\titleformat*{\paragraph}{\normalsize\itshape}
-\titleformat*{\subparagraph}{\normalsize\itshape}
-
-\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{6pt plus 2pt minus 2pt}
-\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{6pt plus 2pt minus 2pt}
-
-\usepackage{titling}
-\setlength{\droptitle}{-.25cm}
-
-%\setlength{\parindent}{0pt}
-%\setlength{\parskip}{6pt plus 2pt minus 1pt}
-%\setlength{\emergencystretch}{3em}  % prevent overfull lines 
-
-\usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
-\usepackage[utf8]{inputenc}
-\linespread{1.05}
-
-\usepackage{fancyhdr, lastpage}
-% Define a custom page style for the first page
-\fancypagestyle{firstpage}{
-  \renewcommand{\headrulewidth}{0.0pt}
-  \renewcommand{\footrulewidth}{0.0pt}
-  \lhead{}
-  \chead{}
-  \rhead{} % Customize right header for first page
-  \lfoot{\scriptsize \sffamily \bfseries $initials$ | $title$}
-  \cfoot{}
-  \rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
-}
-
-% Define the regular page style for subsequent pages (optional)
-\fancypagestyle{regular}{
-  \renewcommand{\headrulewidth}{0.0pt}
-  \renewcommand{\footrulewidth}{0.0pt}
-  \lhead{}
-  \chead{}
-  \rhead{} % Empty right header for regular pages
-  \lfoot{\scriptsize \sffamily \bfseries $initials$ | $title$}
-  \cfoot{}
-  \rfoot{\scriptsize \sffamily \bfseries \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
-}
-
-\usepackage{titlesec}
-\titleformat*{\subsection}{\itshape}
-
-\makeatletter
-\@ifpackageloaded{hyperref}{}{%
-\ifxetex
-  \usepackage[setpagesize=false, % page size defined by xetex
-              unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
-\else
-  \usepackage[unicode=true]{hyperref}
-\fi
-}
-\@ifpackageloaded{color}{
-    \PassOptionsToPackage{usenames,dvipsnames}{color}
-}{%
-    \usepackage[usenames,dvipsnames]{color}
-}
-\makeatother
-\hypersetup{breaklinks=true,
-            bookmarks=true,
-            pdfauthor={$if(author)$$for(author)$$author.name$ ($author.affiliation$)$sep$ and $endfor$$endif$},
-            pdfkeywords={$if(keywords)$$keywords$$endif$},
-            pdftitle={$title$$if(subtitle)$: $subtitle$$endif$},
-            colorlinks=true,
-            citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
-            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
-            linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
-            pdfborder={0 0 0}}
-\urlstyle{same}  % don't use monospace font for urls
-
-\setcounter{secnumdepth}{0}
-
-$if(listings)$
-\usepackage{listings}
-$endif$
-$if(lhs)$
-\lstnewenvironment{code}{\lstset{language=r,basicstyle=\small\ttfamily}}{}
-$endif$
-$if(highlighting-macros)$
-$highlighting-macros$
-$endif$
-$if(verbatim-in-note)$
-\usepackage{fancyvrb}
-$endif$
-$if(tables)$
-\usepackage{longtable}
-$endif$
-
-$if(graphics)$
+% Package Imports
+\usepackage{amssymb,amsmath}
+\usepackage{xcolor}
 \usepackage{graphicx}
-% We will generate all images so they have a width \maxwidth. This means
-% that they will get their normal width if they fit onto the page, but
-% are scaled down if they would overflow the margins.
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
-\else\Gin@nat@width\fi}
-\makeatother
-\let\Oldincludegraphics\includegraphics
-\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
-$endif$
-
-$if(natbib)$
-\usepackage{natbib}
-\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
-$endif$
-$if(biblatex)$
-\usepackage$if(biblio-style)$[style=$biblio-style$]$endif${biblatex}
-$if(biblatexoptions)$\ExecuteBibliographyOptions{$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$}$endif$
-$for(bibliography)$
-\addbibresource{$bibliography$}
-$endfor$
-$endif$
-$if(listings)$
-\usepackage{listings}
-$endif$
-
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr, lastpage}
 \usepackage{setspace}
+\usepackage{titlesec}
 
+% Font Setup (fallback to lmodern if no specific fonts are provided)
+\usepackage{lmodern}
+
+% Optional Page Number Suppression
+$if(suppress_page_numbers)$
+  \pagestyle{empty} % Suppress page numbers globally if suppress_page_numbers is set
+$else$
+  \pagestyle{fancy} % Use custom page style for non-suppressed pages
+$endif$
+
+% Fancy Header and Footer Setup
+\fancyhf{} % Clear header and footer
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage} % Display page number in the right footer
+
+% Title Formatting
+\titleformat*{\section}{\Large\sffamily\bfseries\color{black}}
+\titleformat*{\subsection}{\large\sffamily\bfseries\color{black}}
+\titleformat*{\subsubsection}{\normalsize\sffamily\bfseries\itshape\color{black}}
+
+% Document Title and Author
 $if(title)$
-\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
+\title{$title$}
 $endif$
-$if(subtitle)$
-\providecommand{\subtitle}[1]{}
-\subtitle{$subtitle$}
-$endif$
-
 $if(author)$
-\author{$for(author)$$author$$sep$ \and $endfor$}
+\author{$author$}
 $endif$
+$if(date)$
 \date{$date$}
+$else$
+\date{\today}
+$endif$
 
+% Begin Document
 \begin{document}
 
-\thispagestyle{firstpage} % Apply the custom page style to the first page
-\pagestyle{regular} % Apply the regular page style to subsequent pages (optional)
+\maketitle
 
-% Title and Author Information
-\begin{flushleft}
-    \Large \sffamily \bfseries $title$
-\end{flushleft}
-\vspace{1mm}
+% Conditional Author Information (replace with empty if not provided)
 $if(author)$
-    {\large \sffamily $author$} \\
+\begin{flushright}
+{\large \sffamily \bfseries $author$}\\[.35ex]
+$if(address)$
+\emph{\small $address$}\\[.35ex]
+$endif$
+$if(phone)$
+\small{$phone$}\\
 $endif$
 $if(email)$
-    \texttt{$email$} \\
+\small{\href{mailto:$email$}{$email$}}\\
+$endif$
+$if(url)$
+\small{\href{http://$url$}{$url$}}
+$endif$
+\end{flushright}
 $endif$
 
-\hrule
-\vspace{6mm}
+\vspace{1em}
 
 $body$
 
+% Bibliography Section (if any)
 $if(natbib)$
-$if(bibliography)$
-$if(biblio-title)$
-$if(book-class)$
-\renewcommand\bibname{$biblio-title$}
-$else$
-\renewcommand\refname{$biblio-title$}
-$endif$
-$endif$
-\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
-$endif$
+\bibliographystyle{$biblio-style$}
+\bibliography{$bibliography$}
 $endif$
 
 $if(biblatex)$
-\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+\printbibliography
 $endif$
-
-$for(include-after)$
-$include-after$
-$endfor$
 
 \end{document}
