@@ -213,9 +213,12 @@ $endfor$
 
 \begin{flushleft}\Large \sffamily \bfseries $title$  \end{flushleft}
 	\vspace{1 mm}   
+$if(author)$
 {\large \sffamily $author$} \\
-%\emph{$affiliation$} \\
-$if(email)$\texttt{$email$}$else$TBD$endif$   \\
+$endif$
+$if(email)$
+\texttt{$email$} \\
+$endif$
 
 % \blankline 
   
