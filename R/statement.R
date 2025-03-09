@@ -1,7 +1,7 @@
-#' Steve's Statement Template
+#' Statement Template
 #'
-#' A template for what I term "statements." These are things like research statements and teaching statements when I'm
-#' applying for jobs or doing end-of-the-semester busy work for the proverbial "ball and chain."
+#' A template for "statements." These are things like research statements and teaching statements when 
+#' applying for jobs or doing  work for the proverbial "ball and chain."
 #'
 #' # About YAML header fields
 #'
