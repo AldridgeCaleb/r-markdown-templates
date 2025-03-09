@@ -446,7 +446,12 @@ $if(location)$$if(fontawesome)$\faMapMarker \hspace{1 mm}$else$\emph{Location:}$
 \vspace{-1em}
 \flushleft{\footnotesize
 $if(web)$$if(fontawesome)$\faGlobe \hspace{1 mm}$else$\emph{Web:}$endif$ \href{http://$web$}{\tt $web$}  \hspace{1 mm}$endif$ 
-% $if(twitter)$$if(fontawesome)$\faTwitter \hspace{1 mm}$else$\emph{Twitter:}$endif$ \href{http://twitter.com/$twitter$}{\tt $twitter$} \hspace{1 mm}$endif$
+$if(twitter)$
+\usepackage{ifthen} % Ensure this is in the preamble
+\ifthenelse{\equal{$twitter$}{}}{}{%
+  $if(fontawesome)$\faTwitter \hspace{1 mm}$else$\emph{Twitter:}$endif$ \href{http://twitter.com/$twitter$}{\tt $twitter$} \hspace{1 mm}
+}
+$endif$
 $if(linkedin)$$if(fontawesome)$\faLinkedin \hspace{1 mm}$else$\emph{LinkedIn:}$endif$ \href{https://www.linkedin.com/in/$linkedin$}{\tt $linkedin$} \hspace{1 mm}$endif$
 $if(github)$$if(fontawesome)$\faGithub \hspace{1 mm}$else$\emph{Github:}$endif$ \href{http://github.com/$github$}{\tt $github$} \hspace{1 mm}$endif$
 }
