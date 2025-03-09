@@ -360,8 +360,9 @@ $if(fontawesome)$\usepackage{fontawesome}$endif$
 % \titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
 
 \usepackage{titlesec}
-\definecolor{black}{rgb}{0,0,0}
-\definecolor{grey}{rgb}{0.5,0.5,0.5}
+\usepackage{xcolor}
+\definecolor{black}{rgb}{.0,.0,.0}
+\definecolor{grey}{rgb}{.5,.5,.5}
 \titleformat*{\section}{\Large\sffamily\bfseries\color{black}}
 \titleformat*{\subsection}{\large\sffamily\bfseries\color{black}}
 \titleformat*{\subsubsection}{\normalsize\sffamily\bfseries\itshape\color{black}}
@@ -434,20 +435,20 @@ $if(includephoto)$
 $endif$ % includephoto
 %\end{wrapfigure}
 
-\flushleft{\Large \bfseries $author$}
+\flushleft{\Large \sffamily \bfseries $author$}
 
 \flushleft{\footnotesize
 
 $if(email)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:}{\tt $email$} \hspace{1 mm}$endif$
-$if(email)$$if(fontawesome)$\faPhone \hspace{1 mm}$else$\emph{Phone:}$endif$ $phone$ \hspace{1 mm}$endif$
-$if(email)$$if(fontawesome)$\faMapMarker \hspace{1 mm}$else$\emph{Location:}$endif$ $location$ \hspace{1 mm}$endif$
+$if(phone)$$if(fontawesome)$\faPhone \hspace{1 mm}$else$\emph{Phone:}$endif$ $phone$ \hspace{1 mm}$endif$
+$if(location)$$if(fontawesome)$\faMapMarker \hspace{1 mm}$else$\emph{Location:}$endif$ $location$ \hspace{1 mm}$endif$
 }
 \vspace{-1em}
 \flushleft{\footnotesize
 $if(web)$$if(fontawesome)$\faGlobe \hspace{1 mm}$else$\emph{Web:}$endif$ \href{http://$web$}{\tt $web$}  \hspace{1 mm}$endif$ 
-% $if(email)$$if(fontawesome)$\faTwitter \hspace{1 mm}$else$\emph{Twitter:}$endif$ \href{http://twitter.com/$twitter$}{\tt $twitter$} \hspace{1 mm}$endif$
-$if(email)$$if(fontawesome)$\faLinkedin \hspace{1 mm}$else$\emph{LinkedIn:}$endif$ \href{https://www.linkedin.com/in/$linkedin$}{\tt $linkedin$} \hspace{1 mm}$endif$
-$if(email)$$if(fontawesome)$\faGithub \hspace{1 mm}$else$\emph{Github:}$endif$ \href{http://github.com/$github$}{\tt $github$} \hspace{1 mm}$endif$
+$if(twitter)$$if(fontawesome)$\faTwitter \hspace{1 mm}$else$\emph{Twitter:}$endif$ \href{http://twitter.com/$twitter$}{\tt $twitter$} \hspace{1 mm}$endif$
+$if(linkedin)$$if(fontawesome)$\faLinkedin \hspace{1 mm}$else$\emph{LinkedIn:}$endif$ \href{https://www.linkedin.com/in/$linkedin$}{\tt $linkedin$} \hspace{1 mm}$endif$
+$if(github)$$if(fontawesome)$\faGithub \hspace{1 mm}$else$\emph{Github:}$endif$ \href{http://github.com/$github$}{\tt $github$} \hspace{1 mm}$endif$
 }
 
 $body$
