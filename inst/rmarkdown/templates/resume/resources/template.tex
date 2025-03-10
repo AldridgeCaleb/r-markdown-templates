@@ -439,9 +439,10 @@ $endif$
 $if(location)$
   $if(fontawesome)$\faMapMarker \hspace{1 mm}$else$\emph{Location:}$endif$ $location$ \hspace{1 mm}
 $endif$
-}
-\vspace{1.25mm}
-\flushleft{\footnotesize
+\vert \hspace{1 mm}
+%}
+%\vspace{1.25mm}
+%\flushleft{\footnotesize
 $if(web)$
   $if(fontawesome)$\href{http://$web$}{\faGlobe} \hspace{1 mm}$else$\emph{Web:} \href{http://$web$}{\tt $web$} \hspace{1 mm}$endif$
 $endif$
