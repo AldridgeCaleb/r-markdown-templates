@@ -351,6 +351,7 @@ $endif$
 
 % Use fontawesome. Note: you'll need TeXLive 2015. Update.
 $if(fontawesome)$\usepackage{fontawesome}$endif$
+$if(academicons)$\usepackage{academicons}$endif$
 
 % Mess with sections
 \usepackage{titlesec}
@@ -429,19 +430,23 @@ $endif$ % includephoto
 \flushleft{\huge \sffamily \bfseries $author$}
 
 \flushleft{\footnotesize
-
-$if(email)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:}{\tt $email$} \hspace{1 mm}$endif$
+$if(email)$$if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:$email$}{\tt $email$} \hspace{1 mm}$endif$
 $if(phone)$$if(fontawesome)$\faPhone \hspace{1 mm}$else$\emph{Phone:}$endif$ $phone$ \hspace{1 mm}$endif$
 $if(location)$$if(fontawesome)$\faMapMarker \hspace{1 mm}$else$\emph{Location:}$endif$ $location$ \hspace{1 mm}$endif$
 }
 \vspace{-1em}
 \flushleft{\footnotesize
-$if(web)$$if(fontawesome)$\faGlobe \hspace{1 mm}$else$\emph{Web:}$endif$ \href{http://$web$}{\tt $web$}  \hspace{1 mm}$endif$ 
-$if(linkedin)$$if(fontawesome)$\faLinkedin \hspace{1 mm}$else$\emph{LinkedIn:}$endif$ \href{https://www.linkedin.com/in/$linkedin$}{\tt $linkedin$} \hspace{1 mm}$endif$
-$if(github)$$if(fontawesome)$\faGithub \hspace{1 mm}$else$\emph{Github:}$endif$ \href{http://github.com/$github$}{\tt $github$} \hspace{1 mm}$endif$
+$if(web)$$if(fontawesome)$\faGlobe \hspace{1 mm}$else$\emph{Web:}$endif$ \href{http://$web$}{\faGlobe} \hspace{1 mm}$endif$
+$if(linkedin)$$if(fontawesome)$\faLinkedin \hspace{1 mm}$else$\emph{LinkedIn:}$endif$ \href{https://www.linkedin.com/in/$linkedin$}{\faLinkedin} \hspace{1 mm}$endif$
+$if(github)$$if(fontawesome)$\faGithub \hspace{1 mm}$else$\emph{Github:}$endif$ \href{http://github.com/$github$}{\faGithub} \hspace{1 mm}$endif$
+$if(stackoverflow)$$if(academicons)$\faStackExchange \hspace{1 mm}$else$\emph{StackExchange:}$endif$ \href{https://stackexchange.com/users/$stackexchange$}{\tt $stackexchange$} \hspace{1 mm}
+$if(googlescholar)$$if(academicons)$\aiGoogleScholar \hspace{1 mm}$else$\emph{Google Scholar:}$endif$ \href{https://scholar.google.com/citations?user=$googlescholar$}{\aiGoogleScholar} \hspace{1 mm}$endif$
+$if(orcid)$$if(academicons)$\aiOrcid \hspace{1 mm}$else$\emph{ORCID:}$endif$ \href{https://orcid.org/$orcid$}{\aiOrcid} \hspace{1 mm}$endif$
+$if(researchgate)$$if(academicons)$\aiResearchGate \hspace{1 mm}$else$\emph{ResearchGate:}$endif$ \href{https://www.researchgate.net/profile/$researchgate$}{\aiResearchGate} \hspace{1 mm}$endif$
+$if(twitter)$$if(fontawesome)$\faTwitter \hspace{1 mm}$else$\emph{Twitter:}$endif$ \href{https://twitter.com/$twitter$}{\faTwitter} \hspace{1 mm}$endif$
+$endif$
 }
 
 $body$
 
 \end{document}
-
