@@ -428,10 +428,10 @@ $endif$ % includephoto
 %\end{wrapfigure}
 
 % Name and social/research profiles share a single line.
-% The \hfill pushes the icon group to the right margin.
+% The icons follow the name directly, separated by 1 mm.
 \noindent\makebox[\linewidth][l]{%
   {\huge\sffamily\bfseries $author$}%
-  \hfill
+  \hspace{1mm}%
   {\footnotesize\normalfont
 $if(web)$
   $if(fontawesome)$\href{http://$web$}{\faGlobe} \hspace{1 mm}$else$\emph{Web:} \href{http://$web$}{\tt $web$} \hspace{1 mm}$endif$
@@ -458,7 +458,7 @@ $if(twitter)$
   $if(fontawesome)$\href{https://twitter.com/$twitter$}{\faTwitter} \hspace{1 mm}$else$\emph{Twitter:} \href{https://twitter.com/$twitter$}{\tt $twitter$} \hspace{1 mm}$endif$
 $endif$
   }%
-}\par\vspace{2mm}
+}\par\vspace{1mm}%
 
 $body$
 
