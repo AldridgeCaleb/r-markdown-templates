@@ -427,22 +427,12 @@ $if(includephoto)$
 $endif$ % includephoto
 %\end{wrapfigure}
 
-\flushleft{\huge \sffamily \bfseries $author$}
-
-\flushleft{\footnotesize
-$if(email)$
-  $if(fontawesome)$\faEnvelopeO \hspace{1 mm}$else$\emph{E-mail:}$endif$ \href{mailto:$email$}{\tt $email$} \hspace{1 mm}
-$endif$
-$if(phone)$
-  $if(fontawesome)$\faPhone \hspace{1 mm}$else$\emph{Phone:}$endif$ $phone$ \hspace{1 mm}
-$endif$
-$if(location)$
-  $if(fontawesome)$\faMapMarker \hspace{1 mm}$else$\emph{Location:}$endif$ $location$ \hspace{1 mm}
-$endif$
-\vert \hspace{1 mm}
-%}
-%\vspace{1.25mm}
-%\flushleft{\footnotesize
+% Name and social/research profiles share a single line.
+% The \hfill pushes the icon group to the right margin.
+\noindent\makebox[\linewidth][l]{%
+  {\huge\sffamily\bfseries $author$}%
+  \hfill
+  {\footnotesize\normalfont
 $if(web)$
   $if(fontawesome)$\href{http://$web$}{\faGlobe} \hspace{1 mm}$else$\emph{Web:} \href{http://$web$}{\tt $web$} \hspace{1 mm}$endif$
 $endif$
@@ -467,7 +457,8 @@ $endif$
 $if(twitter)$
   $if(fontawesome)$\href{https://twitter.com/$twitter$}{\faTwitter} \hspace{1 mm}$else$\emph{Twitter:} \href{https://twitter.com/$twitter$}{\tt $twitter$} \hspace{1 mm}$endif$
 $endif$
-}
+  }%
+}\par\vspace{2mm}
 
 $body$
 
